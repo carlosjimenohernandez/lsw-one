@@ -2,10 +2,10 @@
 
 Complemento personal de software.
 
-# Índice
+### Índice
 
 - [Lsw-one](#lsw-one)
-- [Índice](#índice)
+    - [Índice](#índice)
     - [Links del proyecto](#links-del-proyecto)
     - [Aplicaciones](#aplicaciones)
     - [Trucos](#trucos)
@@ -24,19 +24,6 @@ Complemento personal de software.
 - android: *los links expiran en 1 semana*
    - última versión: [https://limewire.com/d/uJJjv#iyvI89x9Kh](https://limewire.com/d/uJJjv#iyvI89x9Kh)
    - versión del 29 de agosto de 2025: [https://limewire.com/d/uJJjv#iyvI89x9Kh](https://limewire.com/d/uJJjv#iyvI89x9Kh)
-   - versión del 28 de agosto de 2025: [https://limewire.com/d/vIb3d#O2gDqJu6ct](https://limewire.com/d/vIb3d#O2gDqJu6ct)
-   - versión del 23 de agosto de 2025: [https://limewire.com/d/ZQez4#tFuJg4EXp4](https://limewire.com/d/ZQez4#tFuJg4EXp4)
-   - versión del 22 de agosto de 2025: [https://limewire.com/d/ayytL#oz9f6h4BAV](https://limewire.com/d/ayytL#oz9f6h4BAV)
-   - versión del 2 de julio de 2025: [https://limewire.com/d/R4vqC#s1heaZPuDp](https://limewire.com/d/R4vqC#s1heaZPuDp)
-   - versión del 25 de junio de 2025: [https://limewire.com/d/jyjQJ#QgUFVCdVNy](https://limewire.com/d/jyjQJ#QgUFVCdVNy)
-   - versión del 23 de junio de 2025: [https://limewire.com/d/2lIZi#0CCQvtNDxZ](https://limewire.com/d/2lIZi#0CCQvtNDxZ)
-   - versión del 17 de junio de 2025: [https://limewire.com/d/XPVEI#ke3F0Dv4y3](https://limewire.com/d/XPVEI#ke3F0Dv4y3)
-   - versión del 11 de junio de 2025: [https://limewire.com/d/3ozEK#mes5pxNwiq](https://limewire.com/d/3ozEK#mes5pxNwiq)
-   - versión del 07 de junio de 2025: [https://limewire.com/d/Jssxd#rz6sW7c7fb](https://limewire.com/d/Jssxd#rz6sW7c7fb)
-   - versión del 25 de mayo de 2025: [https://limewire.com/d/wwZ9R#XVbUKcXNYT](https://limewire.com/d/wwZ9R#XVbUKcXNYT)
-   - versión del 22 de mayo de 2025: [https://limewire.com/d/78RSi#zH7uOedSQi](https://limewire.com/d/78RSi#zH7uOedSQi)
-   - versión del 20 de mayo de 2025: [https://limewire.com/d/kudnT#OM1lPo9zPT](https://limewire.com/d/kudnT#OM1lPo9zPT)
-   - versión del 19 de mayo de 2025: [https://limewire.com/d/Mrfnh#KhXWBctbGg](https://limewire.com/d/Mrfnh#KhXWBctbGg)
 - github: [https://github.com/allnulled/lsw-one](https://github.com/allnulled/lsw-one)
 - documentación: [https://allnulled.github.io/lsw-one/reference](https://allnulled.github.io/lsw-one/reference)
 
