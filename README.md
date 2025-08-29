@@ -20,12 +20,12 @@ Complemento personal de software.
 ### Links del proyecto
 
 - web:
-   - [https://allnulled.github.io/lsw-one](https://allnulled.github.io/lsw-one)
+   - [https://carlosjimenohernandez.github.io/lsw-one](https://carlosjimenohernandez.github.io/lsw-one)
 - android: *los links expiran en 1 semana*
    - última versión: [https://limewire.com/d/uJJjv#iyvI89x9Kh](https://limewire.com/d/uJJjv#iyvI89x9Kh)
    - versión del 29 de agosto de 2025: [https://limewire.com/d/uJJjv#iyvI89x9Kh](https://limewire.com/d/uJJjv#iyvI89x9Kh)
-- github: [https://github.com/allnulled/lsw-one](https://github.com/allnulled/lsw-one)
-- documentación: [https://allnulled.github.io/lsw-one/reference](https://allnulled.github.io/lsw-one/reference)
+- github: [https://github.com/carlosjimenohernandez/lsw-one](https://github.com/carlosjimenohernandez/lsw-one)
+- documentación: [https://carlosjimenohernandez.github.io/lsw-one/reference](https://carlosjimenohernandez.github.io/lsw-one/reference)
 
 ### Aplicaciones
 
