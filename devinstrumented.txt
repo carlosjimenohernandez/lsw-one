@@ -1,0 +1,4 @@
+/home/carlos/Escritorio/lsw-one/src/lsw-framework/src/apis/lsw-ensurer/ensure.js
+--> /home/carlos/Escritorio/lsw-one/src-instrumented/lsw-framework/src/apis/lsw-ensurer/ensure.instr.js
+/home/carlos/Escritorio/lsw-one/src/lsw-framework/src/apis/lsw-dom/lsw-vue2.js
+--> /home/carlos/Escritorio/lsw-one/src-instrumented/lsw-framework/src/apis/lsw-dom/lsw-vue2.instr.js
