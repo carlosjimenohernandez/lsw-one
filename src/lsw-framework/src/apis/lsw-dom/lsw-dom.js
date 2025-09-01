@@ -65,7 +65,7 @@
     static querySelectorFirst(selector, matchingText = false, originalElement = document) {
       const all = originalElement.querySelectorAll(selector);
       const matched = Array.from(all).filter(element => {
-        return element.textContent.trim().toLowerCase() === matchingText.toLowerCase();
+        return element.textContent.trim().toLowerCase() === matchingText.trim().toLowerCase();
       });
       return matched.length ? matched[0] : null;
     }

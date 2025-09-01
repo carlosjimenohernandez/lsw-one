@@ -21,7 +21,7 @@
       LswDom.querySelectorFirst(".home_mobile_off_panel > .mobile_off_panel_cell", "💬").click();
     }
     static async abrirHomepage() {
-      LswDom.querySelectorFirst(".main_topbar_button", "📟").click();
+      LswDom.querySelectorFirst(".main_topbar_button", "📟️").click();
     }
     static async calendario() {
       LswDom.querySelectorFirst(".home_mobile_off_panel > .mobile_off_panel_cell", "📅").click();

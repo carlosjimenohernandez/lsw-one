@@ -532,7 +532,7 @@
             try {
               return filter(item);
             } catch (error) {
-              console.error("Error arised from filter callback on «browsie.select»");
+              console.error("Error arised from filter callback on «browsie.select»", error);
               return false;
             }
           });

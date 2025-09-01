@@ -1,0 +1,21 @@
+.lsw_diario {}
+.lsw_diario .diario_date_box {
+    padding: 4px;
+    background-color: rgba(255,255,255,0.4);
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 0 0 1px white;
+    border-radius: 2pt;
+    border: 1px solid black;
+    font-size: 11px;
+}
+.lsw_diario .diario_textarea {
+    width: 100%;
+    min-height: 300px;
+    border: 1px solid black;
+    box-shadow: 0 0 4px black;
+}
+.lsw_diario .diario_change_mode_button {
+    border: 1px solid black;
+}

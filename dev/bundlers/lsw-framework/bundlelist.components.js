@@ -324,6 +324,8 @@ module.exports = Instrumenter.instrumentSet([
   `${basepath}/lsw-framework/src/components/lsw-tester-viewer/lsw-tester-viewer`,
   `${basepath}/lsw-framework/src/components/lsw-tester-module-viewer/lsw-tester-module-viewer`,
   `${basepath}/lsw-framework/src/components/lsw-test-context-viewer/lsw-test-context-viewer`,
+  // DIARIO:
+  `${basepath}/lsw-framework/src/components/lsw-diario/lsw-diario`,
   // JS VIEWER:
   `${basepath}/lsw-framework/src/components/lsw-js-viewer/lsw-js-viewer`,
   // ANDROID API:
@@ -341,6 +343,7 @@ module.exports = Instrumenter.instrumentSet([
   `${basepath}/lsw-framework/src/apis/lsw-proxies/Limitador.js`,
   `${basepath}/lsw-framework/src/apis/lsw-proxies/Impresion.js`,
   `${basepath}/lsw-framework/src/apis/lsw-proxies/Nota.js`,
+  `${basepath}/lsw-framework/src/apis/lsw-proxies/Entrada_de_diario.js`,
   `${basepath}/lsw-framework/src/apis/lsw-proxies/Automensaje.js`,
   `${basepath}/lsw-framework/src/apis/lsw-proxies/Lista.js`,
   `${basepath}/lsw-framework/src/apis/lsw-proxies/Recordatorio.js`,

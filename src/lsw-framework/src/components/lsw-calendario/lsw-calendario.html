@@ -1,6 +1,6 @@
 <div class="Component LswCalendario">
 
-  <lsw-typical-title class="margin_bottom_1" :buttons="[{
+  <lsw-typical-title class="margin_bottom_1" v-if="accionesViewer" :buttons="[{
     event: openNewTaskDialog,
     text: '➕🐾'
   }]">

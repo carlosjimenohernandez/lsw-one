@@ -80,6 +80,9 @@ Las aplicaciones que vienen por defecto son:
 - 💬➕ Nueva nota
    - ℹ️ Para crear notas rápidas
    - ℹ️ Soporta Markdown y LaTeX
+- 📖 Diario
+   - ℹ️ Para un trackeo de texto a diario
+   - ℹ️ Puedes ir de un día a otro
 - 🔬 Enciclopedia
    - ℹ️ Puedes hacer libros, categorías y artículos
 - 🔬➕ Nuevo artículo
