@@ -1,18 +1,18 @@
 <div class="lsw_diario">
   <lsw-typical-title :buttons="diarioButtons">📖 Diario</lsw-typical-title>
   <div class="flex_row centered margin_top_1">
-    <div class="flex_100">
-      <div class="diario_date_box">
-        {{ LswTimer.utils.formatDateToSpanish(selectedDate, true) }}
-      </div>
-    </div>
-    <div class="flex_1 pad_left_1">
+    <div class="flex_1 pad_right_1">
       <button
         class="supermini"
         style="min-width: 30px; border-color: #486023; box-shadow: 0 0 1px black;"
         v-on:click="saveText">
         💾
       </button>
+    </div>
+    <div class="flex_100">
+      <div class="diario_date_box">
+        📝 {{ LswTimer.utils.formatDateToSpanish(selectedDate, true) }}
+      </div>
     </div>
   </div>
   <div class="pad_top_1" v-if="isSelectedCalendar">
