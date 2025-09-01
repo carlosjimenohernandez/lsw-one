@@ -282893,6 +282893,14 @@ Vue.component("LswDiario", {
         {{ LswTimer.utils.formatDateToSpanish(selectedDate, true) }}
       </div>
     </div>
+    <div class="flex_1 pad_left_1">
+      <button
+        class="supermini"
+        style="min-width: 30px; border-color: #486023; box-shadow: 0 0 1px black;"
+        v-on:click="saveText">
+        💾
+      </button>
+    </div>
   </div>
   <div class="pad_top_1" v-if="isSelectedCalendar">
     <lsw-calendario
@@ -282931,9 +282939,6 @@ Vue.component("LswDiario", {
       diarioButtons: [{
         text: "📆",
         event: () => this.toggleCalendar(),
-      }, {
-        text: "💾",
-        event: () => this.saveText(),
       }, {
         text: "◀️",
         event: () => this.moveToPrevious(),

@@ -14,9 +14,6 @@ Vue.component("LswDiario", {
         text: "📆",
         event: () => this.toggleCalendar(),
       }, {
-        text: "💾",
-        event: () => this.saveText(),
-      }, {
         text: "◀️",
         event: () => this.moveToPrevious(),
       }, {
