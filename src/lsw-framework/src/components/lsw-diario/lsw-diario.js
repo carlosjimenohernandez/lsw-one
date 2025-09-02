@@ -10,6 +10,8 @@ Vue.component("LswDiario", {
       selectedMode: "edit", // also: "view"
       selectedText: "",
       isSelectedCalendar: false,
+      fontSize: 12,
+      fontFamily: 'inherit',
       diarioButtons: [{
         text: "📆",
         event: () => this.toggleCalendar(),
@@ -31,6 +33,22 @@ Vue.component("LswDiario", {
       this.$trace("lsw-tests-page.methods.toggleCalendar");
       this.isSelectedCalendar = !this.isSelectedCalendar;
     },
+    increaseFontSize() {
+      this.$trace("lsw-tests-page.methods.increaseFontSize");
+      this.fontSize++;
+    },
+    decreaseFontSize() {
+      this.$trace("lsw-tests-page.methods.decreaseFontSize");
+      this.fontSize--;
+    },
+    toggleMonospaced() {
+      this.$trace("lsw-tests-page.methods.decreaseFontSize");
+      if(this.fontFamily === "monospace") {
+        this.fontFamily = "inherit";
+      } else {
+        this.fontFamily = "monospace";
+      }
+    },
     async saveText() {
       this.$trace("lsw-tests-page.methods.saveText");
       const currentDay = LswTimer.utils.fromDateToDatestring(this.selectedDate, true);
@@ -44,8 +62,8 @@ Vue.component("LswDiario", {
           tiene_contenido: this.selectedText
         });
         this.$lsw.toasts.send({
-          title: "Entrada creada",
-          text: "La entrada de diario ha sido añadida"
+          title: "Entrada actualizada",
+          text: "La entrada de diario ha sido actualizada"
         });
       } else {
         await this.$lsw.database.insert("Entrada_de_diario", {
@@ -53,8 +71,8 @@ Vue.component("LswDiario", {
           tiene_contenido: this.selectedText
         });
         this.$lsw.toasts.send({
-          title: "Entrada actualizada",
-          text: "La entrada de diario ha sido actualizada"
+          title: "Entrada creada",
+          text: "La entrada de diario ha sido añadida"
         });
       }
     },

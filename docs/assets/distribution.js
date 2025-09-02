@@ -282910,17 +282910,17 @@ Vue.component("LswTestContextViewer", {
 Vue.component("LswDiario", {
   template: `<div class="lsw_diario">
   <lsw-typical-title :buttons="diarioButtons">📖 Diario</lsw-typical-title>
-  <div class="flex_row centered margin_top_1">
+  <div class="flex_row margin_top_1">
     <div class="flex_1 pad_right_1">
       <button
-        class="supermini"
-        style="min-width: 30px; border-color: #486023; box-shadow: 0 0 1px black;"
+        class=""
+        style="min-width: 40px; border-color: #486023;"
         v-on:click="saveText">
         💾
       </button>
     </div>
     <div class="flex_100">
-      <div class="diario_date_box">
+      <div class="diario_date_box height_100" style="padding-top: 12px;">
         📝 {{ LswTimer.utils.formatDateToSpanish(selectedDate, true) }}
       </div>
     </div>
@@ -282934,15 +282934,30 @@ Vue.component("LswDiario", {
   </div>
   <div class="flex_row margin_top_1">
     <div class="flex_100" v-if="selectedMode === 'edit'">
-      <textarea class="diario_textarea" spellcheck="false" v-model="selectedText"></textarea>
+      <textarea class="diario_textarea" spellcheck="false" :style="'font-size:' + fontSize + 'px; font-family:' + fontFamily + ';'" v-model="selectedText"></textarea>
     </div>
     <div class="flex_100" style="min-height: 300px;" v-else-if="selectedMode === 'view'">
       <lsw-markdown-viewer :source="selectedText" />
     </div>
     <div class="flex_1 pad_left_1">
       <button 
+        class="diario_little_right_side_button"
+        v-on:click="increaseFontSize">
+        ➕
+      </button>
+      <button 
+        class="diario_little_right_side_button"
+        v-on:click="decreaseFontSize">
+        ➖
+      </button>
+      <button 
+        class="diario_little_right_side_button"
+        v-on:click="toggleMonospaced">
+        🐒
+      </button>
+      <button 
         class="diario_change_mode_button"
-        style="height:100%; min-width: 30px;"
+        style="height: calc(100% - 98px); min-width: 30px;"
         v-on:click="toggleMode">
         <span v-if="selectedMode === 'view'">📝</span>
         <span v-else>🌈</span>
@@ -282959,6 +282974,8 @@ Vue.component("LswDiario", {
       selectedMode: "edit", // also: "view"
       selectedText: "",
       isSelectedCalendar: false,
+      fontSize: 12,
+      fontFamily: 'inherit',
       diarioButtons: [{
         text: "📆",
         event: () => this.toggleCalendar(),
@@ -282980,6 +282997,22 @@ Vue.component("LswDiario", {
       this.$trace("lsw-tests-page.methods.toggleCalendar");
       this.isSelectedCalendar = !this.isSelectedCalendar;
     },
+    increaseFontSize() {
+      this.$trace("lsw-tests-page.methods.increaseFontSize");
+      this.fontSize++;
+    },
+    decreaseFontSize() {
+      this.$trace("lsw-tests-page.methods.decreaseFontSize");
+      this.fontSize--;
+    },
+    toggleMonospaced() {
+      this.$trace("lsw-tests-page.methods.decreaseFontSize");
+      if(this.fontFamily === "monospace") {
+        this.fontFamily = "inherit";
+      } else {
+        this.fontFamily = "monospace";
+      }
+    },
     async saveText() {
       this.$trace("lsw-tests-page.methods.saveText");
       const currentDay = LswTimer.utils.fromDateToDatestring(this.selectedDate, true);
@@ -282993,8 +283026,8 @@ Vue.component("LswDiario", {
           tiene_contenido: this.selectedText
         });
         this.$lsw.toasts.send({
-          title: "Entrada creada",
-          text: "La entrada de diario ha sido añadida"
+          title: "Entrada actualizada",
+          text: "La entrada de diario ha sido actualizada"
         });
       } else {
         await this.$lsw.database.insert("Entrada_de_diario", {
@@ -283002,8 +283035,8 @@ Vue.component("LswDiario", {
           tiene_contenido: this.selectedText
         });
         this.$lsw.toasts.send({
-          title: "Entrada actualizada",
-          text: "La entrada de diario ha sido actualizada"
+          title: "Entrada creada",
+          text: "La entrada de diario ha sido añadida"
         });
       }
     },

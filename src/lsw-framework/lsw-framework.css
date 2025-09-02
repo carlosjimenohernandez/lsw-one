@@ -2058,7 +2058,17 @@ table.filesystem_treeviewer_table > tbody > tr > td:nth-child(2) {
 /* @vuebundler[Lsw_framework_components][124]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-markdown-viewer/lsw-markdown-viewer.js*/
 
 /* @vuebundler[Lsw_framework_components][124]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-markdown-viewer/lsw-markdown-viewer.css*/
+.lsw_markdown_viewer ol,
+.lsw_markdown_viewer ul {
+    padding-left: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
 
+.lsw_markdown_viewer p {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
 
 /* @vuebundler[Lsw_framework_components][125]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-clockwatcher/lsw-clockwatcher.html*/
 
@@ -4153,10 +4163,10 @@ div.codeblock {
 .lsw_diario {}
 .lsw_diario .diario_date_box {
     padding: 4px;
-    background-color: rgba(255,255,255,0.4);
-    color: black;
+    background-color: #00000096;
+    color: white;
     font-weight: bold;
-    text-shadow: 0 0 1px white;
+    text-shadow: 0 0 1px black;
     border-radius: 2pt;
     border: 1px solid black;
     font-size: 11px;
@@ -4169,6 +4179,13 @@ div.codeblock {
 }
 .lsw_diario .diario_change_mode_button {
     border: 1px solid black;
+}
+.lsw_diario .diario_little_right_side_button {
+    min-height: auto;
+    height:100%;
+    min-width: 30px;
+    max-height: 30px;
+    margin-bottom: 2px;
 }
 
 /* @vuebundler[Lsw_framework_components][207]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-js-viewer/lsw-js-viewer.html*/
