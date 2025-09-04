@@ -18,19 +18,19 @@
       LswDom.querySelectorFirst(".home_bottom_panel > button", "+ 💬").click();
     }
     static async verNotas() {
-      LswDom.querySelectorFirst(".home_mobile_off_panel > .mobile_off_panel_cell", "💬").click();
+      LswDom.querySelectorFirst(".home_mobile_bottom_panel > .mobile_bottom_panel_cell", "💬").click();
     }
     static async abrirHomepage() {
       LswDom.querySelectorFirst(".main_topbar_button", "📟️").click();
     }
     static async calendario() {
-      LswDom.querySelectorFirst(".home_mobile_off_panel > .mobile_off_panel_cell", "📅").click();
+      LswDom.querySelectorFirst(".home_mobile_bottom_panel > .mobile_bottom_panel_cell", "📅").click();
     }
     static async abrirCalendario() {
       LswDom.querySelectorFirst(".main_topbar_button", "📆").click();
     }
     static async reportesDeCalendario() {
-      LswDom.querySelectorFirst(".home_mobile_off_panel > .mobile_off_panel_cell", "📅").click();
+      LswDom.querySelectorFirst(".home_mobile_bottom_panel > .mobile_bottom_panel_cell", "📅").click();
       await LswDom.waitForMilliseconds(200);
       LswDom.querySelectorFirst("button.nowrap", "📊").click();
       await LswDom.waitForMilliseconds(200);
@@ -91,7 +91,7 @@
       LswDom.querySelectorFirst("button.main_tab_topbar_button", "📂").click();
     }
     static async abrirWiki() {
-      LswDom.querySelectorFirst(".mobile_off_panel_cell", "🔬").click();
+      LswDom.querySelectorFirst(".mobile_bottom_panel_cell", "🔬").click();
     }
     static async abrirWikiArticulos() {
       await this.abrirWiki();

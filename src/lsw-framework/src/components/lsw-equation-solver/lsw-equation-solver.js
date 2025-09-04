@@ -27,7 +27,13 @@ Vue.component("LswEquationSolver", {
     return {
       equationSolverButtons: [{
         text: "ℹ️",
-        event: () => window.open("https://mathjs.org/docs/expressions/syntax.html", "_blank")
+        event: () => {
+          LswUtils.copyToClipboard("https://mathjs.org/docs/expressions/syntax.html");
+          this.$lsw.toasts.send({
+            title: "Link de sintaxis copiado",
+            text: "El link de math.js ha sido copiado.",
+          });
+        }
       }],
       solution: "",
       equation: this.initialEquation,

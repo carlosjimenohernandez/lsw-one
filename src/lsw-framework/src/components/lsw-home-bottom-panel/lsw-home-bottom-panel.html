@@ -1,0 +1,30 @@
+<div class="lsw_home_bottom_panel">
+    <div class="home_bottom_panel">
+        <!--button class="" v-on:click="() => LswLauncher.global.start('trackeables')">📹</button-->
+        <button class="" v-on:click="() => LswLauncher.global.start('nuevo-artículo')">🔬➕</button>
+        <button class="" v-on:click="() => LswLauncher.global.start('nueva-nota')">💬➕</button>
+        <!--button class="" v-on:click="goToCalendario">📅</button>
+        <button class="" v-on:click="goToAddArticulo">+ 🔬</button>
+        <button class="" v-on:click="goToAddRecordatorio">+ 🪧</button-->
+    </div>
+    <div class="home_mobile_bottom_panel_container">
+        <div class="home_mobile_bottom_panel">
+            <!--div class="mobile_bottom_panel_cell" v-on:click="clickPicas">✴️</div-->
+            <div class="mobile_bottom_panel_cell" v-on:click="() => LswLauncher.global.start('trackeables')">
+                <div class="mobile_bottom_panel_button">📹</div>
+            </div>
+            <div class="mobile_bottom_panel_cell" v-on:click="() => LswLauncher.global.start('sistema-de-ficheros')">
+                <div class="mobile_bottom_panel_button">📂</div>
+            </div>
+            <div class="mobile_bottom_panel_cell" v-on:click="() => LswLauncher.global.start('diario')">
+                <div class="mobile_bottom_panel_button">📖</div>
+            </div>
+            <div class="mobile_bottom_panel_cell" v-on:click="() => LswLauncher.global.start('enciclopedia')">
+                <div class="mobile_bottom_panel_button">🔬</div>
+            </div>
+            <div class="mobile_bottom_panel_cell" v-on:click="() => LswLauncher.global.start('notas')">
+                <div class="mobile_bottom_panel_button">💬</div>
+            </div>
+        </div>
+    </div>
+</div>

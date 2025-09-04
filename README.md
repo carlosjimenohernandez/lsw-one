@@ -22,8 +22,8 @@ Complemento personal de software.
 - web:
    - [https://carlosjimenohernandez.github.io/lsw-one](https://carlosjimenohernandez.github.io/lsw-one)
 - android: *los links expiran en 1 semana*
-   - última versión: [https://limewire.com/d/TQTzN#OMjMJ9SrnU](https://limewire.com/d/TQTzN#OMjMJ9SrnU)
-   - versión del 4 de septiembre de 2025: [https://limewire.com/d/TQTzN#OMjMJ9SrnU](https://limewire.com/d/TQTzN#OMjMJ9SrnU)
+   - última versión: [https://limewire.com/d/tQyal#vB9pVnHxJz](https://limewire.com/d/tQyal#vB9pVnHxJz)
+   - versión del 4 de septiembre de 2025: [https://limewire.com/d/tQyal#vB9pVnHxJz](https://limewire.com/d/tQyal#vB9pVnHxJz)
    - versión del 1 de septiembre de 2025: [https://limewire.com/d/IQSrD#vmRbOWUDr2](https://limewire.com/d/IQSrD#vmRbOWUDr2)
    - versión del 29 de agosto de 2025: [https://limewire.com/d/uJJjv#iyvI89x9Kh](https://limewire.com/d/uJJjv#iyvI89x9Kh)
 - github: [https://github.com/carlosjimenohernandez/lsw-one](https://github.com/carlosjimenohernandez/lsw-one)

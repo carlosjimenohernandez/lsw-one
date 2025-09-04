@@ -284,7 +284,8 @@ module.exports = Instrumenter.instrumentSet([
   `${basepath}/lsw-framework/src/components/lsw-notes/lsw-notes`,
   `${basepath}/lsw-framework/src/components/lsw-configurations-page/lsw-configurations-page`,
   // BASIC DESKTOP COMPONENTS:
-  `${basepath}/lsw-framework/src/components/lsw-automensajes-viewer/lsw-automensajes-viewer`,
+  `${basepath}/lsw-framework/src/components/lsw-home-top-panel/lsw-home-top-panel`,
+  `${basepath}/lsw-framework/src/components/lsw-home-bottom-panel/lsw-home-bottom-panel`,
   `${basepath}/lsw-framework/src/components/lsw-apps-viewer-button/lsw-apps-viewer-button`,
   `${basepath}/lsw-framework/src/components/lsw-apps-viewer-panel/lsw-apps-viewer-panel`,
   // PROTOLANG:

@@ -347,7 +347,7 @@ table.tabla_de_conductometria .minibutton {
     right: 9px;
 }
 
-.home_mobile_off_panel_container {
+.home_mobile_bottom_panel_container {
     position: fixed;
     top: auto;
     bottom: 0px;
@@ -356,7 +356,7 @@ table.tabla_de_conductometria .minibutton {
     height: calc(env(safe-area-inset-bottom, 0) + 47px);
 }
 
-.home_mobile_off_panel {
+.home_mobile_bottom_panel {
     height: 100%;
     background-color: #000000D8;
     color: white;
@@ -371,7 +371,7 @@ table.tabla_de_conductometria .minibutton {
     border-right: 1px solid #333;
 }
 
-.mobile_off_panel_cell {
+.mobile_bottom_panel_cell {
     flex: 1;
     text-align: center;
     border-left: 1px solid #333;
@@ -382,7 +382,7 @@ table.tabla_de_conductometria .minibutton {
     cursor: pointer;
 }
 
-.mobile_off_panel_cell:hover {
+.mobile_bottom_panel_cell:hover {
     background-color: rgba(178, 178, 178, 0.50);
 }
 
