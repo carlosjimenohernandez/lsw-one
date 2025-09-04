@@ -238447,6 +238447,22 @@ lsw.fs.evaluateAsJavascriptFileOrReturn("/kernel/android/api/load.js");
     confirmer: () => typeof LswSqlite !== "undefined",
   });
 
+  LswLazyLoader.global.register({
+    alias: "lsw-sqlite",
+    url: "assets/lib/lsw-sqlite/lsw-sqlite.dist.js",
+    type: "scriptAsync",
+    once: true,
+    confirmer: () => typeof LswSqlite !== "undefined",
+  });
+
+  LswLazyLoader.global.register({
+    alias: "math.js",
+    url: "assets/lib/math.js/math.js",
+    type: "scriptSrc",
+    once: true,
+    confirmer: () => typeof math !== "undefined",
+  });
+
   class LswLazyLoads {
 
     static loadHighlightJs() {
@@ -238511,6 +238527,10 @@ lsw.fs.evaluateAsJavascriptFileOrReturn("/kernel/android/api/load.js");
         await LswLazyLoader.global.load("lsw-sqlite");
       }
       return LswSqlite;
+    }
+
+    static loadMathJs() {
+      return LswLazyLoader.global.load("math.js");
     }
 
   };
@@ -255645,6 +255665,7 @@ LswLauncher.global.register("emojis-picker", "🐱 Emojis", (launchable) => LswL
 LswLauncher.global.register("configuraciones", "🔧 Configuraciones", (launchable) => LswLauncher.openDialog('<lsw-configurations-page />', launchable.name));
 LswLauncher.global.register("trackeables", "📹 Trackeables", (launchable) => LswLauncher.openDialog('<lsw-event-tracker />', launchable.name));
 LswLauncher.global.register("diario", "📖 Diario", (launchable) => LswLauncher.openDialog('<lsw-diario />', launchable.name));
+LswLauncher.global.register("ecuaciones", "√ Ecuaciones", (launchable) => LswLauncher.openDialog('<lsw-equation-solver />', launchable.name));
 LswLauncher.global.register("nueva-feature", "✨ Nueva feature", (launchable) => LswLauncher.openDialog('<lsw-nueva-feature />', launchable.name));
 
 // @code.end: LswLauncher global registry
@@ -282062,7 +282083,8 @@ Vue.component("LswNuevaFeature", {
     <lsw-typical-title>✨ Nueva feature en construcción</lsw-typical-title>
     <div class="pad_vertical_2">🚸 Esta sección está reservada para el desarrollo</div>
     <!--new-canvas-experiment-1 /-->
-    <lsw-diario />
+    <lsw-equation-solver />
+    <!--lsw-diario /-->
     <!--lsw-naty-script-editor /-->
     <!--lsw-test-context-viewer></lsw-test-context-viewer-->
     <!--lsw-mermaid-viewer :source="mermaidSource" /-->
@@ -283205,9 +283227,148 @@ Vue.component("LswJsViewer", {
 
 });
 
-// @vuebundler[Lsw_framework_components][209]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.html
+// @vuebundler[Lsw_framework_components][209]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-equation-solver/lsw-equation-solver.html
 
-// @vuebundler[Lsw_framework_components][209]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.js
+// @vuebundler[Lsw_framework_components][209]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-equation-solver/lsw-equation-solver.js
+// @code.start: LswEquationSolver API | @$section: Vue.js (v2) Components » LswEquationSolver component
+Vue.component("LswEquationSolver", {
+  template: `<div class="lsw_equation_solver">
+    <lsw-typical-title :buttons="equationSolverButtons">
+        √ Ecuaciones
+    </lsw-typical-title>
+    <div class="pad_top_1">Solución: </div>
+    <div class="width_100 pad_top_1 flex_row">
+        <div class="flex_100">
+            <textarea class="supermini width_100" type="text" disabled="true" v-model="solution"></textarea>
+        </div>
+        <div class="flex_1 pad_left_1">
+            <button class="supermini height_100" v-on:click="solve"> √ </button>
+        </div>
+    </div>
+    <div class="pad_top_1">
+        <div>Ecuación:</div>
+    </div>
+    <div class="pad_vertical_1">
+        <textarea class="" v-model="equation" :placeholder="'Example: ' + currentExample"></textarea>
+    </div>
+    <div class="flex_row centered pad_bottom_1"
+        v-for="incognite, incogniteIndex in incognites"
+        v-bind:key="'incognite_' + incogniteIndex">
+        <div class="flex_1">
+            <input class="supermini width_1" style="min-width: 50px;" type="text" v-model="incognite.name">
+        </div>
+        <div class="flex_1 pad_left_1"> = </div>
+        <div class="flex_100 pad_left_1">
+            <input class="supermini width_100" type="text" v-model="incognite.value">
+        </div>
+        <div class="flex_1 pad_left_1">
+            <button class="supermini" v-on:click="() => dropIncognite(incogniteIndex)">❌</button>
+        </div>
+    </div>
+    <button class="supermini width_100"
+        v-on:click="addIncognite">➕ Incógnita</button>
+</div>`,
+  props: {
+    initialIncognites: {
+      type: Array,
+      default: () => [],
+    },
+    initialEquation: {
+      type: String,
+      default: () => "",
+    },
+  },
+  data() {
+    this.$trace("lsw-equation-solver.data");
+    const allExamples = [
+      "x + 10",
+      "sqrt(x)",
+      "log(10000, 10)",
+      "f(x) = x ^ 2 - 5; f(2)",
+      "g(x, y) = x ^ y; g(2, 3)",
+      "x = 7; h(y) = x + y; h(3)",
+      "twice(func, x) = func(func(x)); twice(square, 2)",
+      "twice(func, x) = func(func(x)); f(x) = 3*x; twice(f, 2)",
+      // To be continued...
+    ]
+    return {
+      equationSolverButtons: [{
+        text: "ℹ️",
+        event: () => window.open("https://mathjs.org/docs/expressions/syntax.html", "_blank")
+      }],
+      solution: "",
+      equation: this.initialEquation,
+      incognites: this.initialIncognites,
+      currentExample: LswRandomizer.getRandomItem(allExamples),
+    };
+  },
+  methods: {
+    async load() {
+      this.$trace("lsw-equation-solver.methods.load");
+      await LswLazyLoads.loadMathJs();
+    },
+    addIncognite() {
+      this.$trace("lsw-equation-solver.methods.addIncognite");
+      let incogniteName = "";
+      const originalPossibilities = "xyzabcdefghijklmnopqrstuvw".split("");
+      const possibilities = originalPossibilities.reduce((out, incog) => {
+        out[incog] = false;
+        return out;
+      }, {});
+      Turn_to_true_chosen_possibilities:
+      for(let index=0; index<this.incognites.length; index++) {
+        const incognite = this.incognites[index];
+        possibilities[incognite] = true;
+      }
+      const currentIncognites = this.incognites.map(incognite => incognite.name);
+      Find_first_non_chosen_possibility:
+      for(let index=0; index<originalPossibilities.length; index++) {
+        const possibility = originalPossibilities[index];
+        if(currentIncognites.indexOf(possibility) === -1) {
+          incogniteName = possibility;
+          break Find_first_non_chosen_possibility;
+        }
+      }
+      this.incognites.push({
+        name: incogniteName,
+        value: "",
+      });
+    },
+    solve() {
+      this.$trace("lsw-equation-solver.methods.solve");
+      try {
+        const incogniteValues = this.incognites.reduce((out, it) => {
+          out[it.name] = it.value;
+          return out;
+        }, {});
+        this.solution = math.evaluate(this.equation, incogniteValues);
+      } catch (error) {
+        console.log(error);
+        this.solution = error.message;
+      }
+    },
+    dropIncognite(index) {
+      this.$trace("lsw-equation-solver.methods.solve");
+      this.incognites.splice(index, 1);
+    }
+  },
+  watch: {},
+  async mounted() {
+    try {
+      this.$trace("lsw-equation-solver.mounted");
+      await this.load();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+});
+// @code.end: LswEquationSolver API
+
+// @vuebundler[Lsw_framework_components][209]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-equation-solver/lsw-equation-solver.css
+
+// @vuebundler[Lsw_framework_components][210]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.html
+
+// @vuebundler[Lsw_framework_components][210]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.js
 // @code.start: LswNatyScriptEditor API | @$section: Vue.js (v2) Components » Lsw Wiki API » LswNatyScriptEditor component
 Vue.component("LswNatyScriptEditor", {
   template: `<div class="lsw_naty_script_editor">
@@ -283443,9 +283604,9 @@ Vue.component("LswNatyScriptEditor", {
 });
 // @code.end: LswNatyScriptEditor API
 
-// @vuebundler[Lsw_framework_components][209]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.css
+// @vuebundler[Lsw_framework_components][210]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.css
 
-// @vuebundler[Lsw_framework_components][210]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Accion.js
+// @vuebundler[Lsw_framework_components][211]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Accion.js
 $proxifier.define("org.allnulled.lsw-conductometria.Accion", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -283604,7 +283765,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Accion", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][211]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Banco_de_datos_principal.js
+// @vuebundler[Lsw_framework_components][212]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Banco_de_datos_principal.js
 $proxifier.define("org.allnulled.lsw-conductometria.Banco_de_datos_principal", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -283672,7 +283833,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Banco_de_datos_principal", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][212]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Accion_virtual.js
+// @vuebundler[Lsw_framework_components][213]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Accion_virtual.js
 $proxifier.define("org.allnulled.lsw-conductometria.Accion_virtual", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -283831,7 +283992,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Accion_virtual", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][213]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Concepto.js
+// @vuebundler[Lsw_framework_components][214]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Concepto.js
 $proxifier.define("org.allnulled.lsw-conductometria.Concepto", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -283916,7 +284077,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Concepto", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][214]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Categoria_de_concepto.js
+// @vuebundler[Lsw_framework_components][215]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Categoria_de_concepto.js
 $proxifier.define("org.allnulled.lsw-conductometria.Categoria_de_concepto", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -283986,7 +284147,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Categoria_de_concepto", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][215]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Propagador_prototipo.js
+// @vuebundler[Lsw_framework_components][216]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Propagador_prototipo.js
 $proxifier.define("org.allnulled.lsw-conductometria.Propagador_prototipo", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -284069,7 +284230,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Propagador_prototipo", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][216]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Propagador_de_concepto.js
+// @vuebundler[Lsw_framework_components][217]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Propagador_de_concepto.js
 $proxifier.define("org.allnulled.lsw-conductometria.Propagador_de_concepto", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -284210,7 +284371,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Propagador_de_concepto", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][217]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Limitador.js
+// @vuebundler[Lsw_framework_components][218]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Limitador.js
 $proxifier.define("org.allnulled.lsw-conductometria.Limitador", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -284285,7 +284446,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Limitador", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][218]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Impresion.js
+// @vuebundler[Lsw_framework_components][219]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Impresion.js
 $proxifier.define("org.allnulled.lsw-conductometria.Impresion_de_concepto", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -284360,7 +284521,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Impresion_de_concepto", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][219]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Nota.js
+// @vuebundler[Lsw_framework_components][220]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Nota.js
 $proxifier.define("org.allnulled.lsw-conductometria.Nota", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -284479,7 +284640,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Nota", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][220]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Entrada_de_diario.js
+// @vuebundler[Lsw_framework_components][221]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Entrada_de_diario.js
 $proxifier.define("org.allnulled.lsw-conductometria.Entrada_de_diario", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -284552,7 +284713,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Entrada_de_diario", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][221]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Automensaje.js
+// @vuebundler[Lsw_framework_components][222]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Automensaje.js
 $proxifier.define("org.allnulled.lsw-conductometria.Automensaje", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -284608,7 +284769,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Automensaje", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][222]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Lista.js
+// @vuebundler[Lsw_framework_components][223]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Lista.js
 $proxifier.define("org.allnulled.lsw-conductometria.Lista", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -284727,7 +284888,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Lista", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][223]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Recordatorio.js
+// @vuebundler[Lsw_framework_components][224]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Recordatorio.js
 $proxifier.define("org.allnulled.lsw-conductometria.Recordatorio", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -284827,7 +284988,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Recordatorio", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][224]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Articulo.js
+// @vuebundler[Lsw_framework_components][225]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Articulo.js
 $proxifier.define("org.allnulled.lsw-conductometria.Articulo", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -284968,12 +285129,12 @@ $proxifier.define("org.allnulled.lsw-conductometria.Articulo", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][225]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/lsw-api.js
+// @vuebundler[Lsw_framework_components][226]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/lsw-api.js
 
 
-// @vuebundler[Lsw_framework_components][226]=/home/carlos/Escritorio/lsw-one-2/src/modules/app/app.html
+// @vuebundler[Lsw_framework_components][227]=/home/carlos/Escritorio/lsw-one-2/src/modules/app/app.html
 
-// @vuebundler[Lsw_framework_components][226]=/home/carlos/Escritorio/lsw-one-2/src/modules/app/app.js
+// @vuebundler[Lsw_framework_components][227]=/home/carlos/Escritorio/lsw-one-2/src/modules/app/app.js
 (() => {
   let isFirstTime = true;
   const initialCode = `
@@ -285202,9 +285363,9 @@ rel correr
   });
 })(); 
 
-// @vuebundler[Lsw_framework_components][226]=/home/carlos/Escritorio/lsw-one-2/src/modules/app/app.css
+// @vuebundler[Lsw_framework_components][227]=/home/carlos/Escritorio/lsw-one-2/src/modules/app/app.css
 
-// @vuebundler[Lsw_framework_components][227]=/home/carlos/Escritorio/lsw-one-2/src/bootloader/boot.js
+// @vuebundler[Lsw_framework_components][228]=/home/carlos/Escritorio/lsw-one-2/src/bootloader/boot.js
 try {
   Step_1_organize_api: {
     Vue.prototype.$noop = () => { };
@@ -285286,7 +285447,7 @@ try {
   console.log("[!] Boot failed");
 }
 
-// @vuebundler[Lsw_framework_components][228]=/home/carlos/Escritorio/lsw-one-2/src/bootloader/framework-payload.js
+// @vuebundler[Lsw_framework_components][229]=/home/carlos/Escritorio/lsw-one-2/src/bootloader/framework-payload.js
 //
 // ATENCIÓN!
 //

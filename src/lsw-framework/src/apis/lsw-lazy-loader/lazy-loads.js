@@ -123,6 +123,22 @@
     confirmer: () => typeof LswSqlite !== "undefined",
   });
 
+  LswLazyLoader.global.register({
+    alias: "lsw-sqlite",
+    url: "assets/lib/lsw-sqlite/lsw-sqlite.dist.js",
+    type: "scriptAsync",
+    once: true,
+    confirmer: () => typeof LswSqlite !== "undefined",
+  });
+
+  LswLazyLoader.global.register({
+    alias: "math.js",
+    url: "assets/lib/math.js/math.js",
+    type: "scriptSrc",
+    once: true,
+    confirmer: () => typeof math !== "undefined",
+  });
+
   class LswLazyLoads {
 
     static loadHighlightJs() {
@@ -187,6 +203,10 @@
         await LswLazyLoader.global.load("lsw-sqlite");
       }
       return LswSqlite;
+    }
+
+    static loadMathJs() {
+      return LswLazyLoader.global.load("math.js");
     }
 
   };

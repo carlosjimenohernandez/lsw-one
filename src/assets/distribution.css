@@ -4214,11 +4214,18 @@ div.codeblock {
 
 /* @vuebundler[Lsw_framework_components][208]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-android/lsw-android.js*/
 
-/* @vuebundler[Lsw_framework_components][209]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.html*/
+/* @vuebundler[Lsw_framework_components][209]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-equation-solver/lsw-equation-solver.html*/
 
-/* @vuebundler[Lsw_framework_components][209]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.js*/
+/* @vuebundler[Lsw_framework_components][209]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-equation-solver/lsw-equation-solver.js*/
 
-/* @vuebundler[Lsw_framework_components][209]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.css*/
+/* @vuebundler[Lsw_framework_components][209]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-equation-solver/lsw-equation-solver.css*/
+
+
+/* @vuebundler[Lsw_framework_components][210]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.html*/
+
+/* @vuebundler[Lsw_framework_components][210]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.js*/
+
+/* @vuebundler[Lsw_framework_components][210]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.css*/
 .naty_file_item {
     padding-top: 2px;
 }
@@ -4233,43 +4240,43 @@ div.codeblock {
     background-color: #CCC;
 }
 
-/* @vuebundler[Lsw_framework_components][210]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Accion.js*/
+/* @vuebundler[Lsw_framework_components][211]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Accion.js*/
 
-/* @vuebundler[Lsw_framework_components][211]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Banco_de_datos_principal.js*/
+/* @vuebundler[Lsw_framework_components][212]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Banco_de_datos_principal.js*/
 
-/* @vuebundler[Lsw_framework_components][212]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Accion_virtual.js*/
+/* @vuebundler[Lsw_framework_components][213]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Accion_virtual.js*/
 
-/* @vuebundler[Lsw_framework_components][213]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Concepto.js*/
+/* @vuebundler[Lsw_framework_components][214]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Concepto.js*/
 
-/* @vuebundler[Lsw_framework_components][214]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Categoria_de_concepto.js*/
+/* @vuebundler[Lsw_framework_components][215]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Categoria_de_concepto.js*/
 
-/* @vuebundler[Lsw_framework_components][215]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Propagador_prototipo.js*/
+/* @vuebundler[Lsw_framework_components][216]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Propagador_prototipo.js*/
 
-/* @vuebundler[Lsw_framework_components][216]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Propagador_de_concepto.js*/
+/* @vuebundler[Lsw_framework_components][217]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Propagador_de_concepto.js*/
 
-/* @vuebundler[Lsw_framework_components][217]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Limitador.js*/
+/* @vuebundler[Lsw_framework_components][218]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Limitador.js*/
 
-/* @vuebundler[Lsw_framework_components][218]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Impresion.js*/
+/* @vuebundler[Lsw_framework_components][219]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Impresion.js*/
 
-/* @vuebundler[Lsw_framework_components][219]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Nota.js*/
+/* @vuebundler[Lsw_framework_components][220]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Nota.js*/
 
-/* @vuebundler[Lsw_framework_components][220]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Entrada_de_diario.js*/
+/* @vuebundler[Lsw_framework_components][221]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Entrada_de_diario.js*/
 
-/* @vuebundler[Lsw_framework_components][221]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Automensaje.js*/
+/* @vuebundler[Lsw_framework_components][222]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Automensaje.js*/
 
-/* @vuebundler[Lsw_framework_components][222]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Lista.js*/
+/* @vuebundler[Lsw_framework_components][223]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Lista.js*/
 
-/* @vuebundler[Lsw_framework_components][223]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Recordatorio.js*/
+/* @vuebundler[Lsw_framework_components][224]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Recordatorio.js*/
 
-/* @vuebundler[Lsw_framework_components][224]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Articulo.js*/
+/* @vuebundler[Lsw_framework_components][225]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Articulo.js*/
 
-/* @vuebundler[Lsw_framework_components][225]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/lsw-api.js*/
+/* @vuebundler[Lsw_framework_components][226]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/lsw-api.js*/
 
-/* @vuebundler[Lsw_framework_components][226]=/home/carlos/Escritorio/lsw-one-2/src/modules/app/app.html*/
+/* @vuebundler[Lsw_framework_components][227]=/home/carlos/Escritorio/lsw-one-2/src/modules/app/app.html*/
 
-/* @vuebundler[Lsw_framework_components][226]=/home/carlos/Escritorio/lsw-one-2/src/modules/app/app.js*/
+/* @vuebundler[Lsw_framework_components][227]=/home/carlos/Escritorio/lsw-one-2/src/modules/app/app.js*/
 
-/* @vuebundler[Lsw_framework_components][226]=/home/carlos/Escritorio/lsw-one-2/src/modules/app/app.css*/
+/* @vuebundler[Lsw_framework_components][227]=/home/carlos/Escritorio/lsw-one-2/src/modules/app/app.css*/
 :root {
     --button_height: 42px;
 }
@@ -5320,9 +5327,9 @@ pre.codeblock {
     cursor: grab;
 }
 
-/* @vuebundler[Lsw_framework_components][227]=/home/carlos/Escritorio/lsw-one-2/src/bootloader/boot.js*/
+/* @vuebundler[Lsw_framework_components][228]=/home/carlos/Escritorio/lsw-one-2/src/bootloader/boot.js*/
 
-/* @vuebundler[Lsw_framework_components][228]=/home/carlos/Escritorio/lsw-one-2/src/bootloader/framework-payload.js*/
+/* @vuebundler[Lsw_framework_components][229]=/home/carlos/Escritorio/lsw-one-2/src/bootloader/framework-payload.js*/
 
 
 /* @vuebundler[Litestarter_app][2]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/lsw-framework.js*/

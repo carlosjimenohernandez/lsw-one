@@ -17,6 +17,7 @@ LswLauncher.global.register("emojis-picker", "🐱 Emojis", (launchable) => LswL
 LswLauncher.global.register("configuraciones", "🔧 Configuraciones", (launchable) => LswLauncher.openDialog('<lsw-configurations-page />', launchable.name));
 LswLauncher.global.register("trackeables", "📹 Trackeables", (launchable) => LswLauncher.openDialog('<lsw-event-tracker />', launchable.name));
 LswLauncher.global.register("diario", "📖 Diario", (launchable) => LswLauncher.openDialog('<lsw-diario />', launchable.name));
+LswLauncher.global.register("ecuaciones", "√ Ecuaciones", (launchable) => LswLauncher.openDialog('<lsw-equation-solver />', launchable.name));
 LswLauncher.global.register("nueva-feature", "✨ Nueva feature", (launchable) => LswLauncher.openDialog('<lsw-nueva-feature />', launchable.name));
 
 // @code.end: LswLauncher global registry
