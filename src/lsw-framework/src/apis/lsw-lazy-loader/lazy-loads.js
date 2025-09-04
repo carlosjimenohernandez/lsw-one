@@ -139,6 +139,14 @@
     confirmer: () => typeof math !== "undefined",
   });
 
+  LswLazyLoader.global.register({
+    alias: "smiles-drawer",
+    url: "assets/lib/smiles-drawer/smiles-drawer.min.js",
+    type: "scriptSrc",
+    once: true,
+    confirmer: () => typeof SmilesDrawer !== "undefined",
+  });
+
   class LswLazyLoads {
 
     static loadHighlightJs() {
@@ -207,6 +215,10 @@
 
     static loadMathJs() {
       return LswLazyLoader.global.load("math.js");
+    }
+
+    static loadSmilesDrawer() {
+      return LswLazyLoader.global.load("smiles-drawer");
     }
 
   };

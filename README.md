@@ -45,12 +45,13 @@ Las aplicaciones que vienen por defecto son:
 - 📂 Sistema de ficheros
    - ℹ️ Un sistema de ficheros totalmente virtual basado en [`IndexedDB`](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API)
    - ℹ️ Soporta ficheros:
-      - 🧾 *.js
-      - 🧾 *.css
-      - 🧾 *.html
-      - 🧾 *.pegjs
-      - 🧾 *.md
-         - con soporte para LaTeX
+      - 🧾 *.js - [JS](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference)
+      - 🧾 *.css - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_syntax/Syntax)
+      - 🧾 *.html - [HTML](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax)
+      - 🧾 *.pegjs - [PEGjs](https://peggyjs.org/)
+      - 🧾 *.mmd - [mermaid](https://mermaid.js.org/intro/)
+      - 🧾 *.md - [markdown](https://www.markdownguide.org/basic-syntax/)
+         - con soporte para [LaTeX](https://en.wikibooks.org/wiki/LaTeX/Basics)
             - En misma línea con `$ latex $`
             - En múltiples líneas con `$$` y `$$`
    - 📄 `/kernel/agenda/randomizables.env`
@@ -110,7 +111,13 @@ Las aplicaciones que vienen por defecto son:
    - ℹ️ Permite acceder a ciertas configuraciones de la aplicación
 - √ Ecuaciones
    - ℹ️ Permite resolver ecuaciones complejas
-   - ℹ️ Se basa en [math.js](https://mathjs.org/docs/expressions/syntax.html)
+   - ℹ️ Se basa en [`math.js`](https://mathjs.org/docs/expressions/syntax.html)
+- ⚛️ Moléculas
+   - ℹ️ Permite visualizar moléculas en 2D
+   - ℹ️ Se basa en SMILES (Simplified Molecular Input Line Entry System )
+      - [Tutorial de SMILES por Daylight](https://www.daylight.com/dayhtml/doc/theory/theory.smiles.html)
+      - [Entrada de Wikipedia](https://es.wikipedia.org/wiki/SMILES)
+      - [DOI a mencionar si se usa este código](https://pubs.acs.org/doi/10.1021/acs.jcim.7b00425)
 - 📹 Trackeables
    - ℹ️ Captura frecuencia de eventos de la realidad
    - ℹ️ Monitoriza y persiste tu circunstancia

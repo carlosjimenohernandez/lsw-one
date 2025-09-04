@@ -332,6 +332,8 @@ module.exports = Instrumenter.instrumentSet([
   `${basepath}/lsw-framework/src/apis/lsw-android/lsw-android.js`,
   // EQUATION-SOLVER:
   `${basepath}/lsw-framework/src/components/lsw-equation-solver/lsw-equation-solver`,
+  // MOLECULES-RENDERER:
+  `${basepath}/lsw-framework/src/components/lsw-molecules-renderer/lsw-molecules-renderer`,
   // NATYSCRIPT-EDITOR:
   `${basepath}/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor`,
   // DATABASE PROXIES:

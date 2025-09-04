@@ -238486,6 +238486,14 @@ lsw.fs.evaluateAsJavascriptFileOrReturn("/kernel/android/api/load.js");
     confirmer: () => typeof math !== "undefined",
   });
 
+  LswLazyLoader.global.register({
+    alias: "smiles-drawer",
+    url: "assets/lib/smiles-drawer/smiles-drawer.min.js",
+    type: "scriptSrc",
+    once: true,
+    confirmer: () => typeof SmilesDrawer !== "undefined",
+  });
+
   class LswLazyLoads {
 
     static loadHighlightJs() {
@@ -238554,6 +238562,10 @@ lsw.fs.evaluateAsJavascriptFileOrReturn("/kernel/android/api/load.js");
 
     static loadMathJs() {
       return LswLazyLoader.global.load("math.js");
+    }
+
+    static loadSmilesDrawer() {
+      return LswLazyLoader.global.load("smiles-drawer");
     }
 
   };
@@ -255689,6 +255701,7 @@ LswLauncher.global.register("configuraciones", "🔧 Configuraciones", (launchab
 LswLauncher.global.register("trackeables", "📹 Trackeables", (launchable) => LswLauncher.openDialog('<lsw-event-tracker />', launchable.name));
 LswLauncher.global.register("diario", "📖 Diario", (launchable) => LswLauncher.openDialog('<lsw-diario />', launchable.name));
 LswLauncher.global.register("ecuaciones", "√ Ecuaciones", (launchable) => LswLauncher.openDialog('<lsw-equation-solver />', launchable.name));
+LswLauncher.global.register("moléculas", "⚛️ Moléculas", (launchable) => LswLauncher.openDialog('<lsw-molecules-renderer />', launchable.name));
 LswLauncher.global.register("nueva-feature", "✨ Nueva feature", (launchable) => LswLauncher.openDialog('<lsw-nueva-feature />', launchable.name));
 
 // @code.end: LswLauncher global registry
@@ -282106,7 +282119,8 @@ Vue.component("LswNuevaFeature", {
     <lsw-typical-title>✨ Nueva feature en construcción</lsw-typical-title>
     <div class="pad_vertical_2">🚸 Esta sección está reservada para el desarrollo</div>
     <!--new-canvas-experiment-1 /-->
-    <lsw-equation-solver />
+    <lsw-molecules-renderer :initial-source="false" />
+    <!--lsw-equation-solver /-->
     <!--lsw-diario /-->
     <!--lsw-naty-script-editor /-->
     <!--lsw-test-context-viewer></lsw-test-context-viewer-->
@@ -283389,9 +283403,145 @@ Vue.component("LswEquationSolver", {
 
 // @vuebundler[Lsw_framework_components][209]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-equation-solver/lsw-equation-solver.css
 
-// @vuebundler[Lsw_framework_components][210]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.html
+// @vuebundler[Lsw_framework_components][210]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-molecules-renderer/lsw-molecules-renderer.html
 
-// @vuebundler[Lsw_framework_components][210]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.js
+// @vuebundler[Lsw_framework_components][210]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-molecules-renderer/lsw-molecules-renderer.js
+// @code.start: LswMoleculesRenderer API | @$section: Vue.js (v2) Components » LswMoleculesRenderer component
+const moleculeExamples = [
+  "C",
+  "OCC",
+  "[CH3][CH2][OH] ",
+  "C-C-O",
+  "C(O)C",
+  "OC(=O)C(Br)(Cl)N",
+  "ClC(Br)(N)C(=O)O",
+  "O=C(O)C(N)(Br)Cl",
+  "P",
+  "N",
+  "S",
+  "O",
+  "Cl",
+  "[S]",
+  "[Au]",
+  "[H+]",
+  "[Fe+2]",
+  "[OH-]",
+  "[Fe++]",
+  "[OH3+]",
+  "[NH4+]",
+  "CC",
+  "C=O",
+  "C=C",
+  "O=C=O",
+  "COC",
+  "C#N",
+  "CCO",
+  "[H][H]",
+  "C=CCC=CCO",
+  "C=C-C-C=C-C-O",
+  "OCC=CCC=C",
+  "CCN(CC)CC",
+  "CC(C)C(=O)O",
+  "C=CC(CCC)C(C(C)C)CCC",
+  "C12C3C4C1C5C4C3C25",
+  "O1CCCCC1N1CCCCC1",
+  "[12C]",
+  "[13C]",
+  "[C]",
+  "[13CH4]",
+  "NC(C)(F)C(=O)O",
+  "N[C@](C)(F)C(=O)O",
+];
+Vue.component("LswMoleculesRenderer", {
+  template: `<div class="lsw_molecules_renderer">
+    <lsw-typical-title :buttons="moleculesRendererButtons">
+        ⚛️ Moléculas
+    </lsw-typical-title>
+    <div class="flex_row pad_top_1">
+        <div class="flex_100">
+            <textarea class=""
+                v-model="source"></textarea>
+        </div>
+        <div class="flex_1 pad_left_1">
+            <button class="supermini height_100 pad_horizontal_1"
+                v-on:click="renderSmileScript">⚛️</button>
+        </div>
+    </div>
+    <div class="pad_top_1 text_align_center">
+        <div class="display_inline_block" style="max-width: 230px;">
+            <canvas class="molecules_canvas" width="500" height="500" ref="smilesCanvas" />
+        </div>
+    </div>
+</div>`,
+  props: {
+    initialSource: {
+      type: [Boolean, String],
+      default: () => false,
+    }
+  },
+  data() {
+    this.$trace("lsw-molecules-renderer.data");
+    const originalSource = this.initialSource ? this.initialSource : LswRandomizer.getRandomItem(moleculeExamples);
+    return {
+      moleculesRendererButtons: [{
+        text: "🎲",
+        event: () => this.randomizeSource(),
+      }, {
+        text: "📚",
+        event: () => {
+          LswUtils.copyToClipboard("https://www.daylight.com/dayhtml/doc/theory/theory.smiles.html");
+          this.$lsw.toasts.send({
+            title: "Link copiado",
+            text: "El link de teoría ha sido copiado",
+          });
+        },
+      }, {
+        text: "ℹ️",
+        event: () => {
+          LswUtils.copyToClipboard("https://es.wikipedia.org/wiki/SMILES");
+          this.$lsw.toasts.send({
+            title: "Link copiado",
+            text: "El link de información ha sido copiado",
+          });
+        }
+      }],
+      source: originalSource,
+    };
+  },
+  methods: {
+    randomizeSource() {
+      this.$trace("lsw-molecules-renderer.methods.randomizeSource");
+      this.source = LswRandomizer.getRandomItem(moleculeExamples);
+      this.renderSmileScript();
+    },
+    renderSmileScript() {
+      this.$trace("lsw-molecules-renderer.methods.renderSmileScript");
+      let smilesDrawer = new SmilesDrawer.Drawer({
+        width: 250,
+        height: 250,
+      });
+      SmilesDrawer.parse(this.source, (tree) => {
+        smilesDrawer.draw(tree, this.$refs.smilesCanvas, "light", false);
+      });
+    }
+  },
+  watch: {},
+  async mounted() {
+    try {
+      this.$trace("lsw-molecules-renderer.mounted");
+      await LswLazyLoads.loadSmilesDrawer();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+});
+// @code.end: LswMoleculesRenderer API
+
+// @vuebundler[Lsw_framework_components][210]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-molecules-renderer/lsw-molecules-renderer.css
+
+// @vuebundler[Lsw_framework_components][211]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.html
+
+// @vuebundler[Lsw_framework_components][211]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.js
 // @code.start: LswNatyScriptEditor API | @$section: Vue.js (v2) Components » Lsw Wiki API » LswNatyScriptEditor component
 Vue.component("LswNatyScriptEditor", {
   template: `<div class="lsw_naty_script_editor">
@@ -283627,9 +283777,9 @@ Vue.component("LswNatyScriptEditor", {
 });
 // @code.end: LswNatyScriptEditor API
 
-// @vuebundler[Lsw_framework_components][210]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.css
+// @vuebundler[Lsw_framework_components][211]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.css
 
-// @vuebundler[Lsw_framework_components][211]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Accion.js
+// @vuebundler[Lsw_framework_components][212]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Accion.js
 $proxifier.define("org.allnulled.lsw-conductometria.Accion", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -283788,7 +283938,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Accion", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][212]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Banco_de_datos_principal.js
+// @vuebundler[Lsw_framework_components][213]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Banco_de_datos_principal.js
 $proxifier.define("org.allnulled.lsw-conductometria.Banco_de_datos_principal", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -283856,7 +284006,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Banco_de_datos_principal", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][213]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Accion_virtual.js
+// @vuebundler[Lsw_framework_components][214]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Accion_virtual.js
 $proxifier.define("org.allnulled.lsw-conductometria.Accion_virtual", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -284015,7 +284165,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Accion_virtual", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][214]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Concepto.js
+// @vuebundler[Lsw_framework_components][215]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Concepto.js
 $proxifier.define("org.allnulled.lsw-conductometria.Concepto", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -284100,7 +284250,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Concepto", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][215]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Categoria_de_concepto.js
+// @vuebundler[Lsw_framework_components][216]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Categoria_de_concepto.js
 $proxifier.define("org.allnulled.lsw-conductometria.Categoria_de_concepto", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -284170,7 +284320,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Categoria_de_concepto", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][216]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Propagador_prototipo.js
+// @vuebundler[Lsw_framework_components][217]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Propagador_prototipo.js
 $proxifier.define("org.allnulled.lsw-conductometria.Propagador_prototipo", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -284253,7 +284403,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Propagador_prototipo", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][217]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Propagador_de_concepto.js
+// @vuebundler[Lsw_framework_components][218]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Propagador_de_concepto.js
 $proxifier.define("org.allnulled.lsw-conductometria.Propagador_de_concepto", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -284394,7 +284544,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Propagador_de_concepto", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][218]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Limitador.js
+// @vuebundler[Lsw_framework_components][219]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Limitador.js
 $proxifier.define("org.allnulled.lsw-conductometria.Limitador", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -284469,7 +284619,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Limitador", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][219]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Impresion.js
+// @vuebundler[Lsw_framework_components][220]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Impresion.js
 $proxifier.define("org.allnulled.lsw-conductometria.Impresion_de_concepto", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -284544,7 +284694,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Impresion_de_concepto", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][220]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Nota.js
+// @vuebundler[Lsw_framework_components][221]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Nota.js
 $proxifier.define("org.allnulled.lsw-conductometria.Nota", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -284663,7 +284813,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Nota", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][221]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Entrada_de_diario.js
+// @vuebundler[Lsw_framework_components][222]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Entrada_de_diario.js
 $proxifier.define("org.allnulled.lsw-conductometria.Entrada_de_diario", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -284736,7 +284886,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Entrada_de_diario", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][222]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Automensaje.js
+// @vuebundler[Lsw_framework_components][223]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Automensaje.js
 $proxifier.define("org.allnulled.lsw-conductometria.Automensaje", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -284792,7 +284942,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Automensaje", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][223]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Lista.js
+// @vuebundler[Lsw_framework_components][224]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Lista.js
 $proxifier.define("org.allnulled.lsw-conductometria.Lista", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -284911,7 +285061,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Lista", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][224]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Recordatorio.js
+// @vuebundler[Lsw_framework_components][225]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Recordatorio.js
 $proxifier.define("org.allnulled.lsw-conductometria.Recordatorio", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -285011,7 +285161,7 @@ $proxifier.define("org.allnulled.lsw-conductometria.Recordatorio", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][225]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Articulo.js
+// @vuebundler[Lsw_framework_components][226]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Articulo.js
 $proxifier.define("org.allnulled.lsw-conductometria.Articulo", {
   Item: class extends $proxifier.AbstractItem {
 
@@ -285152,12 +285302,12 @@ $proxifier.define("org.allnulled.lsw-conductometria.Articulo", {
   }
 });
 
-// @vuebundler[Lsw_framework_components][226]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/lsw-api.js
+// @vuebundler[Lsw_framework_components][227]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/lsw-api.js
 
 
-// @vuebundler[Lsw_framework_components][227]=/home/carlos/Escritorio/lsw-one-2/src/modules/app/app.html
+// @vuebundler[Lsw_framework_components][228]=/home/carlos/Escritorio/lsw-one-2/src/modules/app/app.html
 
-// @vuebundler[Lsw_framework_components][227]=/home/carlos/Escritorio/lsw-one-2/src/modules/app/app.js
+// @vuebundler[Lsw_framework_components][228]=/home/carlos/Escritorio/lsw-one-2/src/modules/app/app.js
 (() => {
   let isFirstTime = true;
   const initialCode = `
@@ -285386,9 +285536,9 @@ rel correr
   });
 })(); 
 
-// @vuebundler[Lsw_framework_components][227]=/home/carlos/Escritorio/lsw-one-2/src/modules/app/app.css
+// @vuebundler[Lsw_framework_components][228]=/home/carlos/Escritorio/lsw-one-2/src/modules/app/app.css
 
-// @vuebundler[Lsw_framework_components][228]=/home/carlos/Escritorio/lsw-one-2/src/bootloader/boot.js
+// @vuebundler[Lsw_framework_components][229]=/home/carlos/Escritorio/lsw-one-2/src/bootloader/boot.js
 try {
   Step_1_organize_api: {
     Vue.prototype.$noop = () => { };
@@ -285470,7 +285620,7 @@ try {
   console.log("[!] Boot failed");
 }
 
-// @vuebundler[Lsw_framework_components][229]=/home/carlos/Escritorio/lsw-one-2/src/bootloader/framework-payload.js
+// @vuebundler[Lsw_framework_components][230]=/home/carlos/Escritorio/lsw-one-2/src/bootloader/framework-payload.js
 //
 // ATENCIÓN!
 //
