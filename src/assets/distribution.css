@@ -3590,35 +3590,76 @@ select.form_control {
     margin-top: 54px;
 }
 
-/* @vuebundler[Lsw_framework_components][177]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-home-bottom-panel/lsw-home-bottom-panel.html*/
+/* @vuebundler[Lsw_framework_components][177]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-desktop-bottom-panel/lsw-desktop-bottom-panel.html*/
 
-/* @vuebundler[Lsw_framework_components][177]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-home-bottom-panel/lsw-home-bottom-panel.js*/
+/* @vuebundler[Lsw_framework_components][177]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-desktop-bottom-panel/lsw-desktop-bottom-panel.js*/
 
-/* @vuebundler[Lsw_framework_components][177]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-home-bottom-panel/lsw-home-bottom-panel.css*/
-.new_canvas_experiment_1 {
-
+/* @vuebundler[Lsw_framework_components][177]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-desktop-bottom-panel/lsw-desktop-bottom-panel.css*/
+.lsw_desktop_bottom_panel {
+    position: fixed;
+    top: auto;
+    bottom: 55px;
+    left: auto;
+    right: 9px;
 }
-.new_canvas_experiment_1_canvas_container {
-    border: 1px solid black;
+
+/* @vuebundler[Lsw_framework_components][178]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-home-bottom-panel/lsw-home-bottom-panel.html*/
+
+/* @vuebundler[Lsw_framework_components][178]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-home-bottom-panel/lsw-home-bottom-panel.js*/
+
+/* @vuebundler[Lsw_framework_components][178]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-home-bottom-panel/lsw-home-bottom-panel.css*/
+.home_bottom_panel {
+    position: fixed;
+    top: auto;
+    bottom: calc(env(safe-area-inset-bottom, 0) + 46px + 13px);
+    left: auto;
+    right: 9px;
+}
+
+.home_mobile_bottom_panel_container {
+    position: fixed;
+    top: auto;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: calc(env(safe-area-inset-bottom, 0) + 47px);
+}
+
+.home_mobile_bottom_panel {
+    height: 100%;
+    background-color: #000000D8;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: space-around;
+    justify-content: space-around;
+    box-shadow: 0 0 14px black;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    border-right: 1px solid #333;
+}
+
+.mobile_bottom_panel_cell {
+    flex: 1;
     text-align: center;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    background-color: rgb(0, 0, 0, 0.5);
-}
-.new_canvas_experiment_1_canvas {
-    display: inline-block;
-    width: 250px;
-    height: 250px;
-    border: 1px solid black;
-    vertical-align: middle;
-    background-color: white;
+    border-left: 1px solid #333;
+    height: 100%;
+    padding-top: 8px;
+    min-width: 30px;
+    font-size: 24px;
+    cursor: pointer;
 }
 
-/* @vuebundler[Lsw_framework_components][178]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-apps-viewer-button/lsw-apps-viewer-button.html*/
+.mobile_bottom_panel_cell:hover {
+    background-color: rgba(178, 178, 178, 0.50);
+}
 
-/* @vuebundler[Lsw_framework_components][178]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-apps-viewer-button/lsw-apps-viewer-button.js*/
+/* @vuebundler[Lsw_framework_components][179]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-apps-viewer-button/lsw-apps-viewer-button.html*/
 
-/* @vuebundler[Lsw_framework_components][178]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-apps-viewer-button/lsw-apps-viewer-button.css*/
+/* @vuebundler[Lsw_framework_components][179]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-apps-viewer-button/lsw-apps-viewer-button.js*/
+
+/* @vuebundler[Lsw_framework_components][179]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-apps-viewer-button/lsw-apps-viewer-button.css*/
 .lsw_apps_viewer_button {
 
 }
@@ -3712,11 +3753,11 @@ select.form_control {
     background-color: rgba(255,255,255,0.0);
 }
 
-/* @vuebundler[Lsw_framework_components][179]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-apps-viewer-panel/lsw-apps-viewer-panel.html*/
+/* @vuebundler[Lsw_framework_components][180]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-apps-viewer-panel/lsw-apps-viewer-panel.html*/
 
-/* @vuebundler[Lsw_framework_components][179]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-apps-viewer-panel/lsw-apps-viewer-panel.js*/
+/* @vuebundler[Lsw_framework_components][180]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-apps-viewer-panel/lsw-apps-viewer-panel.js*/
 
-/* @vuebundler[Lsw_framework_components][179]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-apps-viewer-panel/lsw-apps-viewer-panel.css*/
+/* @vuebundler[Lsw_framework_components][180]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-apps-viewer-panel/lsw-apps-viewer-panel.css*/
 .lsw_apps_viewer_panel {}
 
 .desktop_free_area {
@@ -3804,76 +3845,76 @@ select.form_control {
 }
 
 
-/* @vuebundler[Lsw_framework_components][180]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-languages/protolang/protolang.js*/
+/* @vuebundler[Lsw_framework_components][181]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-languages/protolang/protolang.js*/
 
-/* @vuebundler[Lsw_framework_components][181]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-protolang-editor/lsw-protolang-editor.html*/
+/* @vuebundler[Lsw_framework_components][182]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-protolang-editor/lsw-protolang-editor.html*/
 
-/* @vuebundler[Lsw_framework_components][181]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-protolang-editor/lsw-protolang-editor.js*/
+/* @vuebundler[Lsw_framework_components][182]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-protolang-editor/lsw-protolang-editor.js*/
 
-/* @vuebundler[Lsw_framework_components][181]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-protolang-editor/lsw-protolang-editor.css*/
-
-
-/* @vuebundler[Lsw_framework_components][182]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-accion/lsw-spontaneous-form-accion.html*/
-
-/* @vuebundler[Lsw_framework_components][182]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-accion/lsw-spontaneous-form-accion.js*/
-
-/* @vuebundler[Lsw_framework_components][182]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-accion/lsw-spontaneous-form-accion.css*/
+/* @vuebundler[Lsw_framework_components][182]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-protolang-editor/lsw-protolang-editor.css*/
 
 
-/* @vuebundler[Lsw_framework_components][183]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-articulo/lsw-spontaneous-form-articulo.html*/
+/* @vuebundler[Lsw_framework_components][183]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-accion/lsw-spontaneous-form-accion.html*/
 
-/* @vuebundler[Lsw_framework_components][183]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-articulo/lsw-spontaneous-form-articulo.js*/
+/* @vuebundler[Lsw_framework_components][183]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-accion/lsw-spontaneous-form-accion.js*/
 
-/* @vuebundler[Lsw_framework_components][183]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-articulo/lsw-spontaneous-form-articulo.css*/
-
-
-/* @vuebundler[Lsw_framework_components][184]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-lista/lsw-spontaneous-form-lista.html*/
-
-/* @vuebundler[Lsw_framework_components][184]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-lista/lsw-spontaneous-form-lista.js*/
-
-/* @vuebundler[Lsw_framework_components][184]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-lista/lsw-spontaneous-form-lista.css*/
+/* @vuebundler[Lsw_framework_components][183]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-accion/lsw-spontaneous-form-accion.css*/
 
 
-/* @vuebundler[Lsw_framework_components][185]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-nota/lsw-spontaneous-form-nota.html*/
+/* @vuebundler[Lsw_framework_components][184]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-articulo/lsw-spontaneous-form-articulo.html*/
 
-/* @vuebundler[Lsw_framework_components][185]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-nota/lsw-spontaneous-form-nota.js*/
+/* @vuebundler[Lsw_framework_components][184]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-articulo/lsw-spontaneous-form-articulo.js*/
 
-/* @vuebundler[Lsw_framework_components][185]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-nota/lsw-spontaneous-form-nota.css*/
-
-
-/* @vuebundler[Lsw_framework_components][186]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-recordatorio/lsw-spontaneous-form-recordatorio.html*/
-
-/* @vuebundler[Lsw_framework_components][186]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-recordatorio/lsw-spontaneous-form-recordatorio.js*/
-
-/* @vuebundler[Lsw_framework_components][186]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-recordatorio/lsw-spontaneous-form-recordatorio.css*/
+/* @vuebundler[Lsw_framework_components][184]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-articulo/lsw-spontaneous-form-articulo.css*/
 
 
-/* @vuebundler[Lsw_framework_components][187]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-accion/lsw-spontaneous-table-accion.html*/
+/* @vuebundler[Lsw_framework_components][185]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-lista/lsw-spontaneous-form-lista.html*/
 
-/* @vuebundler[Lsw_framework_components][187]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-accion/lsw-spontaneous-table-accion.js*/
+/* @vuebundler[Lsw_framework_components][185]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-lista/lsw-spontaneous-form-lista.js*/
 
-/* @vuebundler[Lsw_framework_components][187]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-accion/lsw-spontaneous-table-accion.css*/
-
-
-/* @vuebundler[Lsw_framework_components][188]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-articulo/lsw-spontaneous-table-articulo.html*/
-
-/* @vuebundler[Lsw_framework_components][188]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-articulo/lsw-spontaneous-table-articulo.js*/
-
-/* @vuebundler[Lsw_framework_components][188]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-articulo/lsw-spontaneous-table-articulo.css*/
+/* @vuebundler[Lsw_framework_components][185]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-lista/lsw-spontaneous-form-lista.css*/
 
 
-/* @vuebundler[Lsw_framework_components][189]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-lista/lsw-spontaneous-table-lista.html*/
+/* @vuebundler[Lsw_framework_components][186]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-nota/lsw-spontaneous-form-nota.html*/
 
-/* @vuebundler[Lsw_framework_components][189]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-lista/lsw-spontaneous-table-lista.js*/
+/* @vuebundler[Lsw_framework_components][186]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-nota/lsw-spontaneous-form-nota.js*/
 
-/* @vuebundler[Lsw_framework_components][189]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-lista/lsw-spontaneous-table-lista.css*/
+/* @vuebundler[Lsw_framework_components][186]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-nota/lsw-spontaneous-form-nota.css*/
 
 
-/* @vuebundler[Lsw_framework_components][190]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-nota/lsw-spontaneous-table-nota.html*/
+/* @vuebundler[Lsw_framework_components][187]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-recordatorio/lsw-spontaneous-form-recordatorio.html*/
 
-/* @vuebundler[Lsw_framework_components][190]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-nota/lsw-spontaneous-table-nota.js*/
+/* @vuebundler[Lsw_framework_components][187]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-recordatorio/lsw-spontaneous-form-recordatorio.js*/
 
-/* @vuebundler[Lsw_framework_components][190]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-nota/lsw-spontaneous-table-nota.css*/
+/* @vuebundler[Lsw_framework_components][187]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-form-recordatorio/lsw-spontaneous-form-recordatorio.css*/
+
+
+/* @vuebundler[Lsw_framework_components][188]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-accion/lsw-spontaneous-table-accion.html*/
+
+/* @vuebundler[Lsw_framework_components][188]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-accion/lsw-spontaneous-table-accion.js*/
+
+/* @vuebundler[Lsw_framework_components][188]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-accion/lsw-spontaneous-table-accion.css*/
+
+
+/* @vuebundler[Lsw_framework_components][189]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-articulo/lsw-spontaneous-table-articulo.html*/
+
+/* @vuebundler[Lsw_framework_components][189]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-articulo/lsw-spontaneous-table-articulo.js*/
+
+/* @vuebundler[Lsw_framework_components][189]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-articulo/lsw-spontaneous-table-articulo.css*/
+
+
+/* @vuebundler[Lsw_framework_components][190]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-lista/lsw-spontaneous-table-lista.html*/
+
+/* @vuebundler[Lsw_framework_components][190]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-lista/lsw-spontaneous-table-lista.js*/
+
+/* @vuebundler[Lsw_framework_components][190]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-lista/lsw-spontaneous-table-lista.css*/
+
+
+/* @vuebundler[Lsw_framework_components][191]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-nota/lsw-spontaneous-table-nota.html*/
+
+/* @vuebundler[Lsw_framework_components][191]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-nota/lsw-spontaneous-table-nota.js*/
+
+/* @vuebundler[Lsw_framework_components][191]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-nota/lsw-spontaneous-table-nota.css*/
 .nota_button {
     color: black;
     text-shadow: 0 0 1px white;
@@ -3903,25 +3944,25 @@ select.form_control {
     font-weight: bold;
 }
 
-/* @vuebundler[Lsw_framework_components][191]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-recordatorio/lsw-spontaneous-table-recordatorio.html*/
+/* @vuebundler[Lsw_framework_components][192]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-recordatorio/lsw-spontaneous-table-recordatorio.html*/
 
-/* @vuebundler[Lsw_framework_components][191]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-recordatorio/lsw-spontaneous-table-recordatorio.js*/
+/* @vuebundler[Lsw_framework_components][192]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-recordatorio/lsw-spontaneous-table-recordatorio.js*/
 
-/* @vuebundler[Lsw_framework_components][191]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-recordatorio/lsw-spontaneous-table-recordatorio.css*/
-
-
-/* @vuebundler[Lsw_framework_components][192]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-fast-datetime-control/lsw-fast-datetime-control.html*/
-
-/* @vuebundler[Lsw_framework_components][192]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-fast-datetime-control/lsw-fast-datetime-control.js*/
-
-/* @vuebundler[Lsw_framework_components][192]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-fast-datetime-control/lsw-fast-datetime-control.css*/
+/* @vuebundler[Lsw_framework_components][192]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-spontaneous-table-recordatorio/lsw-spontaneous-table-recordatorio.css*/
 
 
-/* @vuebundler[Lsw_framework_components][193]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-inline-tags-picker/lsw-inline-tags-picker.html*/
+/* @vuebundler[Lsw_framework_components][193]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-fast-datetime-control/lsw-fast-datetime-control.html*/
 
-/* @vuebundler[Lsw_framework_components][193]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-inline-tags-picker/lsw-inline-tags-picker.js*/
+/* @vuebundler[Lsw_framework_components][193]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-fast-datetime-control/lsw-fast-datetime-control.js*/
 
-/* @vuebundler[Lsw_framework_components][193]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-inline-tags-picker/lsw-inline-tags-picker.css*/
+/* @vuebundler[Lsw_framework_components][193]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-fast-datetime-control/lsw-fast-datetime-control.css*/
+
+
+/* @vuebundler[Lsw_framework_components][194]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-inline-tags-picker/lsw-inline-tags-picker.html*/
+
+/* @vuebundler[Lsw_framework_components][194]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-inline-tags-picker/lsw-inline-tags-picker.js*/
+
+/* @vuebundler[Lsw_framework_components][194]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-inline-tags-picker/lsw-inline-tags-picker.css*/
 .lsw_inline_tags_picker {}
 
 .inline_tags_picker_selectables {
@@ -3935,13 +3976,13 @@ select.form_control {
     padding-bottom: 4px;
 }
 
-/* @vuebundler[Lsw_framework_components][194]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-js-inspector/lsw-js-inspector.api.js*/
+/* @vuebundler[Lsw_framework_components][195]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-js-inspector/lsw-js-inspector.api.js*/
 
-/* @vuebundler[Lsw_framework_components][195]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-js-inspector/lsw-js-inspector.html*/
+/* @vuebundler[Lsw_framework_components][196]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-js-inspector/lsw-js-inspector.html*/
 
-/* @vuebundler[Lsw_framework_components][195]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-js-inspector/lsw-js-inspector.js*/
+/* @vuebundler[Lsw_framework_components][196]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-js-inspector/lsw-js-inspector.js*/
 
-/* @vuebundler[Lsw_framework_components][195]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-js-inspector/lsw-js-inspector.css*/
+/* @vuebundler[Lsw_framework_components][196]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-js-inspector/lsw-js-inspector.css*/
 .colorize_for_type_function {
     background-color: #5e2323;
     color: #ccc;
@@ -4016,46 +4057,46 @@ div.codeblock {
     padding: 4px;
 }
 
-/* @vuebundler[Lsw_framework_components][196]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-languages/weeklang/weeklang.bundled.js*/
+/* @vuebundler[Lsw_framework_components][197]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-languages/weeklang/weeklang.bundled.js*/
 
-/* @vuebundler[Lsw_framework_components][197]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-week-planner/lsw-week-planner.html*/
+/* @vuebundler[Lsw_framework_components][198]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-week-planner/lsw-week-planner.html*/
 
-/* @vuebundler[Lsw_framework_components][197]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-week-planner/lsw-week-planner.js*/
+/* @vuebundler[Lsw_framework_components][198]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-week-planner/lsw-week-planner.js*/
 
-/* @vuebundler[Lsw_framework_components][197]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-week-planner/lsw-week-planner.css*/
+/* @vuebundler[Lsw_framework_components][198]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-week-planner/lsw-week-planner.css*/
 
 
-/* @vuebundler[Lsw_framework_components][198]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-mermaid-viewer/lsw-mermaid-viewer.html*/
+/* @vuebundler[Lsw_framework_components][199]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-mermaid-viewer/lsw-mermaid-viewer.html*/
 
-/* @vuebundler[Lsw_framework_components][198]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-mermaid-viewer/lsw-mermaid-viewer.js*/
+/* @vuebundler[Lsw_framework_components][199]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-mermaid-viewer/lsw-mermaid-viewer.js*/
 
-/* @vuebundler[Lsw_framework_components][198]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-mermaid-viewer/lsw-mermaid-viewer.css*/
+/* @vuebundler[Lsw_framework_components][199]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-mermaid-viewer/lsw-mermaid-viewer.css*/
 .mermaid_contents {
     min-height: 100px;
     border: 1px solid black;
 }
 
-/* @vuebundler[Lsw_framework_components][199]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-pegjs-tester/lsw-pegjs-tester.html*/
+/* @vuebundler[Lsw_framework_components][200]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-pegjs-tester/lsw-pegjs-tester.html*/
 
-/* @vuebundler[Lsw_framework_components][199]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-pegjs-tester/lsw-pegjs-tester.js*/
+/* @vuebundler[Lsw_framework_components][200]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-pegjs-tester/lsw-pegjs-tester.js*/
 
-/* @vuebundler[Lsw_framework_components][199]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-pegjs-tester/lsw-pegjs-tester.css*/
+/* @vuebundler[Lsw_framework_components][200]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-pegjs-tester/lsw-pegjs-tester.css*/
 
 
-/* @vuebundler[Lsw_framework_components][200]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-nueva-feature/lsw-nueva-feature.html*/
+/* @vuebundler[Lsw_framework_components][201]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-nueva-feature/lsw-nueva-feature.html*/
 
-/* @vuebundler[Lsw_framework_components][200]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-nueva-feature/lsw-nueva-feature.js*/
+/* @vuebundler[Lsw_framework_components][201]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-nueva-feature/lsw-nueva-feature.js*/
 
-/* @vuebundler[Lsw_framework_components][200]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-nueva-feature/lsw-nueva-feature.css*/
+/* @vuebundler[Lsw_framework_components][201]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-nueva-feature/lsw-nueva-feature.css*/
 .hour_item {
     margin-top: 4px;
 }
 
-/* @vuebundler[Lsw_framework_components][201]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-error-box/lsw-error-box.html*/
+/* @vuebundler[Lsw_framework_components][202]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-error-box/lsw-error-box.html*/
 
-/* @vuebundler[Lsw_framework_components][201]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-error-box/lsw-error-box.js*/
+/* @vuebundler[Lsw_framework_components][202]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-error-box/lsw-error-box.js*/
 
-/* @vuebundler[Lsw_framework_components][201]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-error-box/lsw-error-box.css*/
+/* @vuebundler[Lsw_framework_components][202]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-error-box/lsw-error-box.css*/
 .lsw_error_box {
     position: relative;
     border: 1px solid #6b0505;
@@ -4083,18 +4124,18 @@ div.codeblock {
     font-size: 11px;
 }
 
-/* @vuebundler[Lsw_framework_components][202]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-syntax-error-viewer/lsw-syntax-error-viewer.html*/
+/* @vuebundler[Lsw_framework_components][203]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-syntax-error-viewer/lsw-syntax-error-viewer.html*/
 
-/* @vuebundler[Lsw_framework_components][202]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-syntax-error-viewer/lsw-syntax-error-viewer.js*/
+/* @vuebundler[Lsw_framework_components][203]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-syntax-error-viewer/lsw-syntax-error-viewer.js*/
 
-/* @vuebundler[Lsw_framework_components][202]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-syntax-error-viewer/lsw-syntax-error-viewer.css*/
+/* @vuebundler[Lsw_framework_components][203]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-syntax-error-viewer/lsw-syntax-error-viewer.css*/
 
 
-/* @vuebundler[Lsw_framework_components][203]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-tests-page/lsw-tests-page.html*/
+/* @vuebundler[Lsw_framework_components][204]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-tests-page/lsw-tests-page.html*/
 
-/* @vuebundler[Lsw_framework_components][203]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-tests-page/lsw-tests-page.js*/
+/* @vuebundler[Lsw_framework_components][204]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-tests-page/lsw-tests-page.js*/
 
-/* @vuebundler[Lsw_framework_components][203]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-tests-page/lsw-tests-page.css*/
+/* @vuebundler[Lsw_framework_components][204]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-tests-page/lsw-tests-page.css*/
 .resource_path {
     font-family: monospace;
     font-size: 10px;
@@ -4103,11 +4144,11 @@ div.codeblock {
 
 
 
-/* @vuebundler[Lsw_framework_components][204]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-tester-viewer/lsw-tester-viewer.html*/
+/* @vuebundler[Lsw_framework_components][205]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-tester-viewer/lsw-tester-viewer.html*/
 
-/* @vuebundler[Lsw_framework_components][204]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-tester-viewer/lsw-tester-viewer.js*/
+/* @vuebundler[Lsw_framework_components][205]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-tester-viewer/lsw-tester-viewer.js*/
 
-/* @vuebundler[Lsw_framework_components][204]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-tester-viewer/lsw-tester-viewer.css*/
+/* @vuebundler[Lsw_framework_components][205]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-tester-viewer/lsw-tester-viewer.css*/
 .esquema_de_tests {
     font-size: 11px;
 }
@@ -4151,20 +4192,20 @@ div.codeblock {
     padding-top: 0px;
 }
 
-/* @vuebundler[Lsw_framework_components][205]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-tester-module-viewer/lsw-tester-module-viewer.html*/
+/* @vuebundler[Lsw_framework_components][206]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-tester-module-viewer/lsw-tester-module-viewer.html*/
 
-/* @vuebundler[Lsw_framework_components][205]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-tester-module-viewer/lsw-tester-module-viewer.js*/
+/* @vuebundler[Lsw_framework_components][206]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-tester-module-viewer/lsw-tester-module-viewer.js*/
 
-/* @vuebundler[Lsw_framework_components][205]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-tester-module-viewer/lsw-tester-module-viewer.css*/
+/* @vuebundler[Lsw_framework_components][206]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-tester-module-viewer/lsw-tester-module-viewer.css*/
 .lsw_tester_module_viewer {
     padding-left: 15px;
 }
 
-/* @vuebundler[Lsw_framework_components][206]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-test-context-viewer/lsw-test-context-viewer.html*/
+/* @vuebundler[Lsw_framework_components][207]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-test-context-viewer/lsw-test-context-viewer.html*/
 
-/* @vuebundler[Lsw_framework_components][206]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-test-context-viewer/lsw-test-context-viewer.js*/
+/* @vuebundler[Lsw_framework_components][207]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-test-context-viewer/lsw-test-context-viewer.js*/
 
-/* @vuebundler[Lsw_framework_components][206]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-test-context-viewer/lsw-test-context-viewer.css*/
+/* @vuebundler[Lsw_framework_components][207]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-test-context-viewer/lsw-test-context-viewer.css*/
 .test_cronometer_time {
     font-size: 9px;
     color: #444;
@@ -4183,11 +4224,11 @@ div.codeblock {
     font-size: 11px;
 }
 
-/* @vuebundler[Lsw_framework_components][207]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-diario/lsw-diario.html*/
+/* @vuebundler[Lsw_framework_components][208]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-diario/lsw-diario.html*/
 
-/* @vuebundler[Lsw_framework_components][207]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-diario/lsw-diario.js*/
+/* @vuebundler[Lsw_framework_components][208]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-diario/lsw-diario.js*/
 
-/* @vuebundler[Lsw_framework_components][207]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-diario/lsw-diario.css*/
+/* @vuebundler[Lsw_framework_components][208]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-diario/lsw-diario.css*/
 .lsw_diario {}
 .lsw_diario .diario_date_box {
     padding: 4px;
@@ -4216,11 +4257,11 @@ div.codeblock {
     margin-bottom: 2px;
 }
 
-/* @vuebundler[Lsw_framework_components][208]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-js-viewer/lsw-js-viewer.html*/
+/* @vuebundler[Lsw_framework_components][209]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-js-viewer/lsw-js-viewer.html*/
 
-/* @vuebundler[Lsw_framework_components][208]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-js-viewer/lsw-js-viewer.js*/
+/* @vuebundler[Lsw_framework_components][209]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-js-viewer/lsw-js-viewer.js*/
 
-/* @vuebundler[Lsw_framework_components][208]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-js-viewer/lsw-js-viewer.css*/
+/* @vuebundler[Lsw_framework_components][209]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-js-viewer/lsw-js-viewer.css*/
 .js_viewer_tag {
     white-space: pre-wrap;
     font-family: monospace;
@@ -4236,20 +4277,20 @@ div.codeblock {
     max-height: 100%;
 }
 
-/* @vuebundler[Lsw_framework_components][209]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-android/lsw-android.js*/
+/* @vuebundler[Lsw_framework_components][210]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-android/lsw-android.js*/
 
-/* @vuebundler[Lsw_framework_components][210]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-equation-solver/lsw-equation-solver.html*/
+/* @vuebundler[Lsw_framework_components][211]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-equation-solver/lsw-equation-solver.html*/
 
-/* @vuebundler[Lsw_framework_components][210]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-equation-solver/lsw-equation-solver.js*/
+/* @vuebundler[Lsw_framework_components][211]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-equation-solver/lsw-equation-solver.js*/
 
-/* @vuebundler[Lsw_framework_components][210]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-equation-solver/lsw-equation-solver.css*/
+/* @vuebundler[Lsw_framework_components][211]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-equation-solver/lsw-equation-solver.css*/
 
 
-/* @vuebundler[Lsw_framework_components][211]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-molecules-renderer/lsw-molecules-renderer.html*/
+/* @vuebundler[Lsw_framework_components][212]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-molecules-renderer/lsw-molecules-renderer.html*/
 
-/* @vuebundler[Lsw_framework_components][211]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-molecules-renderer/lsw-molecules-renderer.js*/
+/* @vuebundler[Lsw_framework_components][212]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-molecules-renderer/lsw-molecules-renderer.js*/
 
-/* @vuebundler[Lsw_framework_components][211]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-molecules-renderer/lsw-molecules-renderer.css*/
+/* @vuebundler[Lsw_framework_components][212]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-molecules-renderer/lsw-molecules-renderer.css*/
 .molecules_canvas {
     width: 100%;
     height: 100%;
@@ -4257,11 +4298,11 @@ div.codeblock {
     background-color: white;
 }
 
-/* @vuebundler[Lsw_framework_components][212]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.html*/
+/* @vuebundler[Lsw_framework_components][213]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.html*/
 
-/* @vuebundler[Lsw_framework_components][212]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.js*/
+/* @vuebundler[Lsw_framework_components][213]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.js*/
 
-/* @vuebundler[Lsw_framework_components][212]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.css*/
+/* @vuebundler[Lsw_framework_components][213]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.css*/
 .naty_file_item {
     padding-top: 2px;
 }
@@ -4276,43 +4317,43 @@ div.codeblock {
     background-color: #CCC;
 }
 
-/* @vuebundler[Lsw_framework_components][213]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Accion.js*/
+/* @vuebundler[Lsw_framework_components][214]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Accion.js*/
 
-/* @vuebundler[Lsw_framework_components][214]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Banco_de_datos_principal.js*/
+/* @vuebundler[Lsw_framework_components][215]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Banco_de_datos_principal.js*/
 
-/* @vuebundler[Lsw_framework_components][215]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Accion_virtual.js*/
+/* @vuebundler[Lsw_framework_components][216]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Accion_virtual.js*/
 
-/* @vuebundler[Lsw_framework_components][216]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Concepto.js*/
+/* @vuebundler[Lsw_framework_components][217]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Concepto.js*/
 
-/* @vuebundler[Lsw_framework_components][217]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Categoria_de_concepto.js*/
+/* @vuebundler[Lsw_framework_components][218]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Categoria_de_concepto.js*/
 
-/* @vuebundler[Lsw_framework_components][218]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Propagador_prototipo.js*/
+/* @vuebundler[Lsw_framework_components][219]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Propagador_prototipo.js*/
 
-/* @vuebundler[Lsw_framework_components][219]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Propagador_de_concepto.js*/
+/* @vuebundler[Lsw_framework_components][220]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Propagador_de_concepto.js*/
 
-/* @vuebundler[Lsw_framework_components][220]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Limitador.js*/
+/* @vuebundler[Lsw_framework_components][221]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Limitador.js*/
 
-/* @vuebundler[Lsw_framework_components][221]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Impresion.js*/
+/* @vuebundler[Lsw_framework_components][222]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Impresion.js*/
 
-/* @vuebundler[Lsw_framework_components][222]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Nota.js*/
+/* @vuebundler[Lsw_framework_components][223]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Nota.js*/
 
-/* @vuebundler[Lsw_framework_components][223]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Entrada_de_diario.js*/
+/* @vuebundler[Lsw_framework_components][224]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Entrada_de_diario.js*/
 
-/* @vuebundler[Lsw_framework_components][224]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Automensaje.js*/
+/* @vuebundler[Lsw_framework_components][225]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Automensaje.js*/
 
-/* @vuebundler[Lsw_framework_components][225]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Lista.js*/
+/* @vuebundler[Lsw_framework_components][226]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Lista.js*/
 
-/* @vuebundler[Lsw_framework_components][226]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Recordatorio.js*/
+/* @vuebundler[Lsw_framework_components][227]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Recordatorio.js*/
 
-/* @vuebundler[Lsw_framework_components][227]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Articulo.js*/
+/* @vuebundler[Lsw_framework_components][228]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/apis/lsw-proxies/Articulo.js*/
 
-/* @vuebundler[Lsw_framework_components][228]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/lsw-api.js*/
+/* @vuebundler[Lsw_framework_components][229]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/src/lsw-api.js*/
 
-/* @vuebundler[Lsw_framework_components][229]=/home/carlos/Escritorio/lsw-one-2/src/modules/app/app.html*/
+/* @vuebundler[Lsw_framework_components][230]=/home/carlos/Escritorio/lsw-one-2/src/modules/app/app.html*/
 
-/* @vuebundler[Lsw_framework_components][229]=/home/carlos/Escritorio/lsw-one-2/src/modules/app/app.js*/
+/* @vuebundler[Lsw_framework_components][230]=/home/carlos/Escritorio/lsw-one-2/src/modules/app/app.js*/
 
-/* @vuebundler[Lsw_framework_components][229]=/home/carlos/Escritorio/lsw-one-2/src/modules/app/app.css*/
+/* @vuebundler[Lsw_framework_components][230]=/home/carlos/Escritorio/lsw-one-2/src/modules/app/app.css*/
 :root {
     --button_height: 42px;
 }
@@ -4652,53 +4693,6 @@ table.tabla_de_conductometria .minibutton {
 .scrollable_text_area {
     white-space: pre;
     overflow: scroll;
-}
-
-.home_bottom_panel {
-    position: fixed;
-    top: auto;
-    bottom: calc(env(safe-area-inset-bottom, 0) + 46px + 13px);
-    left: auto;
-    right: 9px;
-}
-
-.home_mobile_bottom_panel_container {
-    position: fixed;
-    top: auto;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    height: calc(env(safe-area-inset-bottom, 0) + 47px);
-}
-
-.home_mobile_bottom_panel {
-    height: 100%;
-    background-color: #000000D8;
-    color: white;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    align-content: space-around;
-    justify-content: space-around;
-    box-shadow: 0 0 14px black;
-    border-top: 1px solid #333;
-    border-bottom: 1px solid #333;
-    border-right: 1px solid #333;
-}
-
-.mobile_bottom_panel_cell {
-    flex: 1;
-    text-align: center;
-    border-left: 1px solid #333;
-    height: 100%;
-    padding-top: 8px;
-    min-width: 30px;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.mobile_bottom_panel_cell:hover {
-    background-color: rgba(178, 178, 178, 0.50);
 }
 
 div.codeblock_viewer {
@@ -5363,9 +5357,9 @@ pre.codeblock {
     cursor: grab;
 }
 
-/* @vuebundler[Lsw_framework_components][230]=/home/carlos/Escritorio/lsw-one-2/src/bootloader/boot.js*/
+/* @vuebundler[Lsw_framework_components][231]=/home/carlos/Escritorio/lsw-one-2/src/bootloader/boot.js*/
 
-/* @vuebundler[Lsw_framework_components][231]=/home/carlos/Escritorio/lsw-one-2/src/bootloader/framework-payload.js*/
+/* @vuebundler[Lsw_framework_components][232]=/home/carlos/Escritorio/lsw-one-2/src/bootloader/framework-payload.js*/
 
 
 /* @vuebundler[Litestarter_app][2]=/home/carlos/Escritorio/lsw-one-2/src/lsw-framework/lsw-framework.js*/

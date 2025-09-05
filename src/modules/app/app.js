@@ -166,6 +166,12 @@ rel correr
         await this.$lsw.fs.ensureDirectory("/kernel/bin");
         await this.$lsw.fs.ensureFile("/kernel/apps/example/load.js", LswConstants.global.pick("/kernel/apps/example/load.js"));
         await this.$lsw.fs.ensureFile("/kernel/android/boot.js", LswConstants.global.pick("/kernel/android/boot.js"));
+        await this.$lsw.fs.ensureFile("/kernel/android/api/load.js", LswConstants.global.pick("/kernel/android/api/load.js"));
+        await this.$lsw.fs.ensureFile("/kernel/android/api/tts.js", LswConstants.global.pick("/kernel/android/api/tts.js"));
+        await this.$lsw.fs.ensureFile("/kernel/android/api/reflection.js", LswConstants.global.pick("/kernel/android/api/reflection.js"));
+        await this.$lsw.fs.ensureFile("/kernel/android/api/fs.js", LswConstants.global.pick("/kernel/android/api/fs.js"));
+        await this.$lsw.fs.ensureFile("/kernel/android/api/debug.js", LswConstants.global.pick("/kernel/android/api/debug.js"));
+        await this.$lsw.fs.ensureFile("/kernel/android/api/bindings.js", LswConstants.global.pick("/kernel/android/api/bindings.js"));
         await this.$lsw.fs.ensureFile("/kernel/goals/goals.week", LswConstants.global.pick("/kernel/goals/goals.week"));
         await this.$lsw.fs.ensureDirectory("/kernel/components");
         await this.$lsw.fs.ensureDirectory("/kernel/natyscript/data");

@@ -283,11 +283,272 @@ return {
 `.trim());
 
 LswConstants.global.define("/kernel/android/boot.js", `
-  
-/*
-// Inject your local android api from here:
+
 lsw.fs.evaluateAsJavascriptFileOrReturn("/kernel/android/api/load.js");
-//*/
 
 `.trim());
 
+LswConstants.global.define("/kernel/android/api/load.js", `
+
+await LswAndroid.eval("sys = {}");
+await LswAndroid.evalFile("/kernel/android/api/debug.js");
+await LswAndroid.evalFile("/kernel/android/api/tts.js");
+await LswAndroid.evalFile("/kernel/android/api/reflection.js");
+await LswAndroid.evalFile("/kernel/android/api/fs.js");
+
+lsw.fs.evaluateAsJavascriptFile("/kernel/android/api/bindings.js");
+
+LswAndroid.hablar("Hola Carlos, bienvenido a ele ese u güán!");
+
+`.trim());
+
+LswConstants.global.define("/kernel/android/api/tts.js", `
+
+sys.tts = {};
+sys.tts.hablar = function(mensaje) {
+  try {
+    var Locale = Packages.java.util.Locale;
+    var TextToSpeech = Packages.android.speech.tts.TextToSpeech;
+    var QUEUE_FLUSH = TextToSpeech.QUEUE_FLUSH;
+    var tts = undefined;
+    var listener = new TextToSpeech.OnInitListener({
+        onInit: function(status) {
+            if (status == TextToSpeech.SUCCESS) {
+                //                tts.language = Locale.US;
+                tts.language = new Locale("es", "ES");
+                tts.setSpeechRate(1.5);
+                tts.speak(mensaje, QUEUE_FLUSH, null, null);
+            }
+        }
+    });
+    tts = new TextToSpeech(applicationContext, listener);
+  } catch (error) {
+    sys.debug.view(error.message);
+  }
+};
+
+`.trim());
+
+LswConstants.global.define("/kernel/android/api/reflection.js", `
+
+sys.reflection = {};
+sys.reflection.instantiate = function (className, paramTypes, args) {
+  var Class = abg.getClass("java.lang.Class");
+  var ReflectArray = abg.getClass("java.lang.reflect.Array");
+  var clazz = abg.getClass(className);
+  var typeClasses = java.lang.reflect.Array.newInstance(Class, paramTypes.length);
+  for (var i = 0; i < paramTypes.length; i++) {
+    typeClasses[i] = Class.forName(paramTypes[i]);
+  }
+  var ctor = clazz.getConstructor(typeClasses);
+  return ctor.newInstance(args);
+};
+
+`.trim());
+
+LswConstants.global.define("/kernel/android/api/fs.js", `
+
+try {
+
+  var File = abg.getClass("java.io.File");
+  var FileReader = abg.getClass("java.io.FileReader");
+  var BufferedReader = abg.getClass("java.io.BufferedReader");
+  var FileWriter = abg.getClass("java.io.FileWriter");
+  var BufferedWriter = abg.getClass("java.io.BufferedWriter");
+
+  sys.fs = {
+
+    get_current_directory: function () {
+      var file = new File(".");
+      return file.getAbsolutePath();
+    },
+
+    make_directory: function (dirpath) {
+      var dir = new File(dirpath);
+      return dir.mkdirs(); // también crea padres si no existen
+    },
+
+    delete_directory: function (dirpath) {
+      var dir = new File(dirpath);
+      if (!dir.exists() || !dir.isDirectory()) return false;
+
+      // borrar recursivamente
+      var files = dir.listFiles();
+      for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        if (file.isDirectory()) {
+          sys.fs.delete_directory(file.getAbsolutePath());
+        } else {
+          file.delete();
+        }
+      }
+      return dir.delete();
+    },
+
+    delete_file: function (filepath) {
+      var f = new File(filepath);
+      if (!f.exists() || !f.isFile()) return false;
+      return f.delete();
+    },
+
+    read_directory: function (dirpath) {
+      var dir = new File(dirpath);
+      if (!dir.exists() || !dir.isDirectory()) return null;
+
+      var files = dir.listFiles();
+      var names = [];
+      for (var i = 0; i < files.length; i++) {
+        names.push(files[i].getName());
+      }
+      return names;
+    },
+
+    exist: function (filepath) {
+      var f = new File(filepath);
+      return f.exists();
+    },
+
+    read_file: function (filepath) {
+      var f = new File(filepath);
+      if (!f.exists()) return null;
+
+      var fr = new FileReader(f);
+      var br = new BufferedReader(fr);
+      var line, content = "";
+
+      while ((line = br.readLine()) !== null) {
+        content += line + "\n";
+      }
+
+      br.close();
+      fr.close();
+      return content;
+    },
+
+    write_file: function (filepath, contents) {
+      var f = new File(filepath);
+      var fw = new FileWriter(f);
+      var bw = new BufferedWriter(fw);
+
+      bw.write(contents);
+      bw.close();
+      fw.close();
+    }
+
+  };
+  sys.fs.get_current_directory();
+} catch (error) {
+  sys.debug.view(error);
+}
+
+`.trim());
+
+LswConstants.global.define("/kernel/android/api/debug.js", `
+
+try {
+
+  var JavaObject = abg.getClass("java.lang.Object");
+
+  sys.debug = {};
+
+  sys.debug.quotify = function (txt) {
+    return '"' + ("" + txt).replace(new RegExp('"', 'gi'), '\\"') + '"';
+  };
+
+  sys.debug.stringifyMaxLevel = 2;
+  sys.debug.stringify = function (anyzin, levelBrute) {
+    var level = levelBrute || 1;
+    if (level > sys.debug.stringifyMaxLevel) {
+      return '"Too deep"';
+    }
+    if (typeof anyzin === "undefined") {
+      return "undefined";
+    }
+    if (typeof anyzin === "number") {
+      return String(anyzin);
+    }
+    if (typeof anyzin === "string") {
+      return sys.debug.quotify(anyzin);
+    }
+    if (typeof anyzin === "function") {
+      return "Function::" + sys.debug.quotify(anyzin.toString());
+    }
+    if (Array.isArray(anyzin)) {
+      var out = "[";
+      for (var i = 0; i < anyzin.length; i++) {
+        if (i !== 0) {
+          out += ",";
+        }
+        if (level > 1) {
+          out += sys.debug.quotify(typeof anyzin[i]);
+        } else {
+          out += sys.debug.stringify(anyzin[i], level + 1);
+        }
+      }
+      out += "]";
+      return out;
+    }
+    if (typeof anyzin === "object") {
+      var isJava = sys.reflection.isJavaObject(anyzin);
+      var out = "{";
+      var keys = Object.keys(anyzin);
+      for (var i = 0; i < keys.length; i++) {
+        if (i !== 0) {
+          out += ",";
+        }
+        out += sys.debug.quotify(keys[i]);
+        out += ":";
+        if ((level > 1) || isJava) {
+          out += sys.debug.quotify(typeof anyzin[keys[i]]);
+        } else {
+          out += sys.debug.stringify(anyzin[keys[i]], level + 1);
+        }
+      }
+      out += "}";
+      return out;
+    }
+    if (typeof anyzin === "boolean") {
+      return String(anyzin);
+    }
+  };
+
+  sys.debug.view = function (data, number) {
+    var msg = '';
+    msg += 'LswDebugger.global.debug(';
+    msg += sys.debug.stringify(data);
+    msg += ')';
+    evaluateByBrowser(msg);
+  };
+
+  sys.debug.textify = function (data) {
+    var msg = '';
+    msg += 'LswDebugger.global.debug(';
+    msg += sys.debug.quotify(data);
+    msg += ')';
+    evaluateByBrowser(msg);
+  };
+
+} catch (error) {
+  evaluateByBrowser("alert('" + error.message.replace(/"/g, "") + '")');
+}
+
+
+try {
+  var File = abg.getClass("java.io.File");
+  // sys.debug.view(File);
+  var file = sys.reflection.instantiate("java.io.File", ["java.lang.String"], ["/path/to"]);
+  var path = file.getAbsolutePath();
+  sys.debug.view(path);
+} catch (error) {
+  sys.debug.view(error);
+}
+
+`.trim());
+
+LswConstants.global.define("/kernel/android/api/bindings.js", `
+
+LswAndroid.hablar = function(msg) {
+    LswAndroid.eval('sys.tts.hablar(' + JSON.stringify(msg) + ')');
+};
+
+`.trim());
